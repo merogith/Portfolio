@@ -491,18 +491,6 @@ h1, h2, h3, h4 { font-family: var(--serif); line-height: 1.18; letter-spacing: -
 .dash__cta.is-placeholder::after { content: " ⏳"; }
 .dash__note { margin-top: 14px; font-size: .82rem; color: var(--muted); font-style: italic; }
 
-/* Embedded live dashboard (Tableau Embedding API v3) */
-.dash__embed {
-  margin: 22px 0 6px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  background: var(--surface-2);
-  min-height: 320px;
-}
-.dash__embed tableau-viz,
-.dash__embed iframe { display: block; width: 100%; border: 0; }
-
 @media (max-width: 860px) {
   .case__figgrid { grid-template-columns: 1fr; }
 }
