@@ -109,7 +109,7 @@
       <p><strong>Procedural map generation.</strong> Every match starts from a fresh map built with gradient noise: the same technique that gives terrain a natural, rolling shape instead of random static. By tuning it, the generator produces recognisably different worlds (solid continents, scattered archipelagos, inland seas), so the strategy changes with the geography rather than the board being the same every time.</p>
       <p><strong>AI that adapts.</strong> Each opponent follows a doctrine (an aggressive missile-spammer plays nothing like a turtling defender) and re-weighs its priorities as the game state changes. Because the world is generated, the AI can't memorise an opening; it has to respond to the map and to you, which keeps single-player matches from feeling scripted.</p>
       <div class="case__callout">
-        <p>Generating everything in code is harder up front, but it means there's no asset bottleneck: a new map type or unit is a few lines, not a pile of art. The trade-off is real, and tuning it is most of the work.</p>
+        <p>Generating everything in code is harder up front, but it means there's no asset bottleneck: a new map type or unit is a few lines, not a pile of art. Most of the work, then, is in the tuning.</p>
       </div>
       <p>Even the audio is generated through WebAudio as an adaptive score that shifts with the action. Vite handles bundling, Vitest and GitHub Actions run the tests on every push, and a separate balance-simulator tool plays factions against each other so I can tune them from data instead of guesswork.</p>
     </section>

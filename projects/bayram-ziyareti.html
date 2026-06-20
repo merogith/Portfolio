@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bayram-Ziyareti — Turkish Kinship Logic Puzzle — Meriç Erler</title>
-  <meta name="description" content="A mobile-first family-tree logic puzzle built on Turkish kinship vocabulary, where relationship terms are computed from the family graph and an authoring-time solver guarantees fair puzzles. Plays in your browser." />
+  <meta name="description" content="A mobile-first family-tree logic puzzle built on Turkish kinship vocabulary, where relationship terms are worked out from the family graph and a solver checks every puzzle has exactly one solution. Plays in your browser." />
   <link rel="canonical" href="https://merogith.github.io/Portfolio/projects/bayram-ziyareti.html" />
 
   <meta property="og:title" content="Bayram-Ziyareti — Turkish Kinship Logic Puzzle — Meriç Erler" />
-  <meta property="og:description" content="A mobile-first family-tree logic puzzle built on Turkish kinship vocabulary, with an authoring-time solver that guarantees fair puzzles." />
+  <meta property="og:description" content="A mobile-first family-tree logic puzzle built on Turkish kinship vocabulary, with a solver that checks every puzzle has exactly one solution." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://merogith.github.io/Portfolio/projects/bayram-ziyareti.html" />
   <meta property="og:image" content="https://merogith.github.io/Portfolio/assets/og-portfolio.png" />
@@ -107,7 +107,7 @@
       <h2>Under the hood</h2>
       <p>The key idea is that a tile's kinship label isn't stored on it. Each relationship term is <strong>derived from the family graph</strong> (the spouse and parent edges plus genders) and recomputed as the tree takes shape. That derivation <em>is</em> the puzzle: you're not recalling a label, you're working out who someone must be.</p>
       <div class="case__callout">
-        <p>Every clue is authored twice: once as human Turkish text, and once as a machine-checkable predicate. That lets an <strong>authoring-time solver</strong> confirm each puzzle has exactly one solution before it ships, so a puzzle is provably fair, never guessable or ambiguous.</p>
+        <p>Every clue is written twice: once as plain Turkish for the player, and once as a logic rule the computer can check. Before a puzzle ships, a <strong>solver</strong> confirms it has exactly one solution, so it's always fair, never a guess.</p>
       </div>
       <p>It's an installable PWA that works offline, the avatars are built from emoji and CSS rather than image files, and it's fully accessible, with ARIA throughout, reduced-motion support, and sound and haptics toggles.</p>
     </section>

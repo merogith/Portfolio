@@ -105,7 +105,7 @@
 
     <section class="case__section reveal">
       <h2>Under the hood</h2>
-      <p>This is the project I've put the most into: a complete, stateful, networked game built and maintained solo, with design docs, database migrations, tests, and profiling behind it, not a weekend prototype.</p>
+      <p>This is the project I've put the most into: a complete, stateful, networked game built and maintained solo, with design docs, database migrations, tests, and performance profiling behind it.</p>
       <ul>
         <li>A <strong>custom engine in vanilla JavaScript</strong>. The turn loop, move resolution, and status/hazard system are all hand-written, with no game framework underneath, so I know exactly how every edge case resolves.</li>
         <li>A <strong>Supabase / PostgreSQL backend</strong> with migrations handles the hard part: online PvP and saving progress. Two players acting on a shared, authoritative state is a different problem than a single-player loop, and most of the engineering effort lives here.</li>

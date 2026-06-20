@@ -105,7 +105,7 @@
 
     <section class="case__section reveal">
       <h2>Under the hood</h2>
-      <p>The engine is built as a pure function: it takes an immutable <code>GameSnapshot</code> and returns the next one, with no DOM and no global state. That one decision is what makes the game <strong>easy to test thoroughly</strong>: given a board, the outcome of a move is fixed and easy to assert, so I can check the rules without ever rendering anything.</p>
+      <p>The game's rules live in one self-contained step: give it the current state of the game and it hands back the next one, with nothing tied to the screen. That one decision is what makes the game <strong>easy to test thoroughly</strong>: for any given board, a move always produces the same result, so I can check the rules without drawing anything on screen.</p>
       <div class="case__callout">
         <p>Because the rules are separated cleanly from the screen, the same engine is checked three ways: unit tests on the state machine, bot logic, and seeded RNG; smoke tests that play a full match in a DOM simulator; and Playwright driving a complete game end-to-end in a real browser.</p>
       </div>
