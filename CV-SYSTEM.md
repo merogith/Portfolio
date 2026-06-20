@@ -20,6 +20,7 @@ no build step, no tooling. You author once, then tailor per application.
 | `one-pager-cv.html` | **Copy-me template** for a job-tailored one-pager: profile + core skills + selected projects + trimmed experience. Tuned to print to one A4 page. |
 | `cv-print.css` | Print/PDF styling for both CV pages (kept out of `styles.css`). |
 | `assets/CV_Meric_Erler.pdf` | The downloadable PDF, regenerated from `master-cv.html` (see below). |
+| `CV-VARIANTS.md` | **Tailoring raw material:** three ready title-line + profile variants (Data·BI / Financial / Game-economy), a keyword bank per role-type, and a pre-send checklist. Paste from here when filling the one-pager. |
 
 ## Workflow
 
@@ -30,13 +31,16 @@ no build step, no tooling. You author once, then tailor per application.
 
 ### B. Tailor a one-pager for a specific job
 1. Duplicate `one-pager-cv.html` (e.g. `applications/one-pager-cv-<company>.html`, or just keep it locally).
-2. Work through every `<!-- TAILOR -->` block using the job ad:
-   - **Profile** — 2–3 sentences aimed at the role; name the case study you built for it.
-   - **Core skills** — keep/reorder the groups the ad asks for.
+2. Work through every `<!-- TAILOR -->` block using the job ad. Paste the matching
+   variant, keywords and domain skill-row from **`CV-VARIANTS.md`** (the three profile
+   variants are also inlined as comments in `one-pager-cv.html`):
+   - **Title-line + Profile** — pick the role variant; tune the first clause to the ad.
+   - **Core skills** — keep/reorder the groups the ad asks for; swap the `Domain` row.
    - **Selected projects** — the 2–3 closest to the role; the case study you built goes first.
    - **Experience** — keep the 3–4 relevant roles, trimmed to their best 1–2 bullets.
 3. **Only use facts that are also on `master-cv.html`.** Never invent dates, titles, or numbers.
-4. Print → Save as PDF (it's tuned to one page). Attach it with the cover letter.
+4. Print → Save as PDF (it's tuned to one page). Rename it `Meric_Erler_CV_<Role>.pdf`,
+   run the pre-send checklist in `CV-VARIANTS.md`, and attach it with the cover letter.
 
 ### C. The per-application case study
 1. Build a small, focused case study for the role (the way `IdleBankTycoonCaseStudy` was built for a game-economy job).
