@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pharmaceutical CRM Sales Analytics — Meriç Erler</title>
   <meta name="description" content="Do sales calls drive prescriptions, and which doctors should a pharma team prioritize? Correlation, regression, and KMeans segmentation on 600 physicians." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232f6b4f'/><text x='50' y='68' font-family='Georgia,serif' font-size='44' fill='%23faf8f3' text-anchor='middle'>ME</text></svg>" />
+  <script>try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -19,8 +20,10 @@
         <span class="nav__mark">ME</span><span class="nav__name">Meriç Erler</span>
       </a>
       <nav class="nav__links" aria-label="Primary">
-        <a href="../index.html#work">Work</a>
-        <a href="../index.html#about">About</a>
+        <a href="../about.html">About</a>
+        <a href="../index.html#work">Data</a>
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#coaching">Coaching</a>
         <a href="../index.html#contact">Contact</a>
       </nav>
       <div class="nav__actions">
@@ -48,6 +51,7 @@
         <div class="case__meta">
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/blob/main/project-1-pharma-crm/analysis.ipynb" target="_blank" rel="noopener">View the notebook</a>
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/tree/main/project-1-pharma-crm" target="_blank" rel="noopener">GitHub folder</a>
+          <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/blob/main/project-1-pharma-crm/DASHBOARD_GUIDE.md" target="_blank" rel="noopener">Dashboard guide</a>
         </div>
       </header>
 
@@ -59,6 +63,32 @@
         <span class="stat"><b>99</b>priority doctors</span>
       </div>
 
+      <!-- ============================================================
+           INTERACTIVE DASHBOARD
+           🔗 TO ADD THE LIVE LINK: replace href="#" below with your
+           published Tableau Public / Power BI URL, then DELETE the
+           class "is-placeholder" so it becomes a live button.
+           ============================================================ -->
+      <section class="dash reveal" aria-label="Interactive dashboard">
+        <span class="dash__eyebrow">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+          Interactive dashboard
+        </span>
+        <h2 class="dash__title">Sales Performance dashboard</h2>
+        <p class="dash__lead">A live BI view of the headline insight: <strong>more calls go with more scripts — so focus the next calls on the 99-doctor High-potential Growth segment.</strong> Slice by region and product to find where rep effort returns the most.</p>
+        <ul class="dash__kpis">
+          <li><b>r = 0.49</b><span>Calls ↔ scripts</span></li>
+          <li><b>+5.5</b><span>Scripts / call</span></li>
+          <li><b>99</b><span>Priority doctors</span></li>
+          <li><b>4</b><span>HCP segments</span></li>
+        </ul>
+        <div class="dash__actions">
+          <a class="btn btn--primary dash__cta is-placeholder" href="#" target="_blank" rel="noopener">Open live dashboard</a>
+          <a class="btn btn--ghost" href="https://github.com/merogith/DataAnalysis/blob/main/project-1-pharma-crm/DASHBOARD_GUIDE.md" target="_blank" rel="noopener">How it's built →</a>
+        </div>
+        <p class="dash__note">Built in Tableau / Power BI on a star-schema export (fact_scripts + dim_rep/hcp/product/region). Live link coming soon.</p>
+      </section>
+
       <section class="case__section reveal">
         <h2>The question</h2>
         <p>A pharma sales team has finite rep time, and two questions decide how to spend it. First: do calls <em>actually move prescriptions</em>, or are reps simply visiting doctors who would have prescribed anyway? Second: <strong>which doctors should the team prioritize?</strong></p>
@@ -69,40 +99,68 @@
 
       <section class="case__section reveal">
         <h2>The data</h2>
-        <p>A <strong>synthetic but realistic</strong> CRM dataset for 600 physicians — call activity and prescription volumes — generated by seeded scripts that deliberately inject real-world messiness (so the cleaning steps are real, not decorative).</p>
+        <p>A <strong>synthetic but realistic</strong> CRM dataset for 600 physicians — call activity and prescription volumes — generated by seeded scripts that deliberately inject real-world messiness (duplicates, missing values, mixed text and date formats, impossible values), so the cleaning steps are real, not decorative. Real pharma CRM data is proprietary and privacy-sensitive, which is why a reproducible generator was the practical path.</p>
       </section>
 
       <section class="case__section reveal">
         <h2>Approach &amp; method</h2>
         <ul>
-          <li>Cleaned and joined the call and prescription records.</li>
-          <li>Tested the call → prescription relationship with <strong>correlation and regression</strong>.</li>
+          <li>Cleaned and joined the call and prescription records, documenting every decision in a table.</li>
+          <li>Tested the call → prescription relationship with <strong>correlation and OLS regression</strong>.</li>
           <li>Segmented the 600 doctors into four behavioral groups with <strong>KMeans</strong>.</li>
-          <li>Built a ranked priority list using SQL <code>RANK() OVER</code> window functions.</li>
+          <li>Built a ranked priority list using SQL <code>RANK() OVER (PARTITION BY region …)</code> window functions.</li>
         </ul>
       </section>
 
       <section class="case__section reveal">
         <h2>What I found</h2>
-        <ul>
-          <li>Calls and prescriptions are meaningfully related: <strong>r = 0.49 (p = 1.5e-37)</strong> — each additional call per year is worth about <strong>5.5 more scripts</strong>. The effort isn't wasted.</li>
-          <li>KMeans separates the doctors into <strong>four distinct segments</strong> with different value and responsiveness.</li>
-          <li>From those, a <strong>99-doctor high-potential list</strong> emerges — the accounts where extra calls should pay off most.</li>
-        </ul>
+        <p>Calls and prescriptions are meaningfully related: <strong>r = 0.49 (R² = 0.24, p ≈ 1.5e-37)</strong> — each additional call per year is worth about <strong>5.5 more scripts</strong>. The effort isn't wasted.</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/pharma-crm/05_calls_vs_scripts.png" alt="Scatter of calls per doctor against scripts written, with an upward trend line" loading="lazy" />
+          <figcaption class="case__figcap">Each dot is a doctor; the upward line means visiting a doctor more often goes with more scripts.</figcaption>
+        </figure>
+
+        <p>Prescribing is concentrated — the <strong>top 20% of doctors write roughly a third of all scripts</strong> — which is exactly why <em>which</em> doctors a rep visits matters as much as how many visits they make.</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/pharma-crm/02_script_concentration.png" alt="Concentration curve showing a small share of doctors driving most prescriptions" loading="lazy" />
+          <figcaption class="case__figcap">A small group of doctors drives a large share of scripts, so targeting beats sheer call volume.</figcaption>
+        </figure>
+
+        <p>A KMeans segmentation splits the doctors into four groups and isolates a <strong>99-doctor "High-potential growth" segment</strong>: doctors with headroom who respond to calls but aren't prescribing at capacity — the best place to invest extra effort.</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/pharma-crm/06_hcp_segments.png" alt="Doctor segments from KMeans clustering plotted by value and responsiveness" loading="lazy" />
+          <figcaption class="case__figcap">Four segments — Champions (133), Steady mid-tier (51), High-potential growth (99), Low priority (317). The growth group is the target.</figcaption>
+        </figure>
+
+        <p>Performance also varies sharply between reps — the top rep drove <strong>6,007 scripts against 154</strong> for the lowest — pointing to a coaching and territory-balancing opportunity.</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/pharma-crm/04_rep_leaderboard.png" alt="Rep leaderboard bar chart ranking sales reps by scripts driven" loading="lazy" />
+          <figcaption class="case__figcap">A wide spread between top and bottom reps — the weaker reps can be coached using the patterns the top reps already follow.</figcaption>
+        </figure>
+
         <div class="case__callout">
           <p>The analysis turns a vague "visit more doctors" into a specific, <strong>ranked list of 99 to visit first</strong>.</p>
         </div>
       </section>
 
       <section class="case__section reveal">
-        <h2>Why it matters</h2>
-        <p>It's the full commercial-analytics loop — cleaning, statistical testing, an ML segmentation, and a SQL-built deliverable — all framed around a decision a sales leader actually makes. Exactly the kind of CRM / commercial analytics that data teams run in pharma and beyond.</p>
+        <h2>Recommendation</h2>
+        <ul>
+          <li><strong>Reallocate calls toward the High-potential growth segment</strong> — these doctors have room to grow and respond to visits, so each call should return more scripts than visiting an already-loyal doctor.</li>
+          <li><strong>Keep enough contact with the Champions</strong> to retain them, without over-investing where there's no upside.</li>
+          <li><strong>Coach the weaker reps</strong> using the top reps' call-frequency and scripts-per-call patterns, and rebalance territory load toward higher-potential regions.</li>
+        </ul>
+      </section>
+
+      <section class="case__section reveal">
+        <h2>Limitations &amp; next steps</h2>
+        <p>This is correlation, not proof of causation, and it runs on synthetic data. To firm it up I'd add a call-to-script time lag (does this month's calls lift next month's scripts?), move toward causal evidence with a matched-control or A/B call experiment, and bring in cost-per-call so the recommendation optimises ROI rather than raw script volume.</p>
       </section>
 
       <section class="case__section reveal">
         <h2>Tech &amp; skills</h2>
         <ul class="tags tags--sm">
-          <li>Python</li><li>pandas</li><li>scikit-learn (KMeans)</li><li>statsmodels</li><li>SQLite (RANK)</li><li>matplotlib / seaborn</li>
+          <li>Python</li><li>pandas</li><li>scikit-learn (KMeans)</li><li>statsmodels</li><li>SQLite (RANK)</li><li>matplotlib / seaborn</li><li>Tableau / Power BI</li>
         </ul>
       </section>
 

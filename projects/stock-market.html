@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>US Stock-Market Valuation &amp; Risk — Meriç Erler</title>
   <meta name="description" content="A 150+ year analysis testing whether valuation predicts long-run stock returns, and quantifying drawdown risk. Python, statsmodels OLS, SQL window functions." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232f6b4f'/><text x='50' y='68' font-family='Georgia,serif' font-size='44' fill='%23faf8f3' text-anchor='middle'>ME</text></svg>" />
+  <script>try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -19,8 +20,10 @@
         <span class="nav__mark">ME</span><span class="nav__name">Meriç Erler</span>
       </a>
       <nav class="nav__links" aria-label="Primary">
-        <a href="../index.html#work">Work</a>
-        <a href="../index.html#about">About</a>
+        <a href="../about.html">About</a>
+        <a href="../index.html#work">Data</a>
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#coaching">Coaching</a>
         <a href="../index.html#contact">Contact</a>
       </nav>
       <div class="nav__actions">
@@ -42,23 +45,50 @@
       </a>
 
       <header class="case__head reveal">
-        <span class="card__tag card__tag--data">Data · Project 3 · real data</span>
+        <span class="card__tag card__tag--data">Data · Project 3 · real market data</span>
         <h1 class="case__title">US Stock-Market Valuation &amp; Risk</h1>
         <p class="case__tagline">Does today's valuation tell you anything about tomorrow's returns? 150+ years of real market data, put to the test.</p>
         <div class="case__meta">
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/blob/main/project-3-finance/analysis.ipynb" target="_blank" rel="noopener">View the notebook</a>
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/tree/main/project-3-finance" target="_blank" rel="noopener">GitHub folder</a>
+          <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/blob/main/project-3-finance/DASHBOARD_GUIDE.md" target="_blank" rel="noopener">Dashboard guide</a>
         </div>
       </header>
 
       <div class="case__statband reveal">
         <span class="stat"><b>150+ yrs</b>real market data</span>
         <span class="stat"><b>p ≈ 1e-40</b>valuation → returns</span>
-        <span class="stat"><b>top 5%</b>CAPE today</span>
+        <span class="stat"><b>CAPE 30.8</b>top 5% ever</span>
         <span class="stat"><b>~2.4%/yr</b>long-run real growth</span>
         <span class="stat"><b>−81%</b>worst drawdown</span>
-        <span class="stat"><b>~0</b>stock–gold corr.</span>
+        <span class="stat"><b>≈ 0</b>stock–gold corr.</span>
       </div>
+
+      <!-- ============================================================
+           INTERACTIVE DASHBOARD
+           🔗 TO ADD THE LIVE LINK: replace href="#" below with your
+           published Tableau Public / Power BI URL, then DELETE the
+           class "is-placeholder" so it becomes a live button.
+           ============================================================ -->
+      <section class="dash reveal" aria-label="Interactive dashboard">
+        <span class="dash__eyebrow">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+          Interactive dashboard
+        </span>
+        <h2 class="dash__title">Valuation &amp; Risk dashboard</h2>
+        <p class="dash__lead">A live BI view of the same story: <strong>the market is near its most expensive level in history, and historically that has been followed by below-average returns.</strong> Filter by decade to explore real price, valuation, volatility and sector mix.</p>
+        <ul class="dash__kpis">
+          <li><b>30.8</b><span>Current CAPE</span></li>
+          <li><b>−81%</b><span>Worst drawdown</span></li>
+          <li><b>~2.4%/yr</b><span>Real growth</span></li>
+          <li><b>≈ 0</b><span>Stock–gold corr.</span></li>
+        </ul>
+        <div class="dash__actions">
+          <a class="btn btn--primary dash__cta is-placeholder" href="#" target="_blank" rel="noopener">Open live dashboard</a>
+          <a class="btn btn--ghost" href="https://github.com/merogith/DataAnalysis/blob/main/project-3-finance/DASHBOARD_GUIDE.md" target="_blank" rel="noopener">How it's built →</a>
+        </div>
+        <p class="dash__note">Built in Tableau / Power BI on a star-schema export (fact_market_monthly + dim_year + dim_sector). Live link coming soon.</p>
+      </section>
 
       <section class="case__section reveal">
         <h2>The question</h2>
@@ -67,13 +97,13 @@
 
       <section class="case__section reveal">
         <h2>The data</h2>
-        <p>Real, public market data spanning a century and a half — Robert Shiller's price/earnings/CAPE series, plus CBOE and LBMA (gold) data. I loaded and shaped it in <strong>SQLite using window functions</strong>, then ran the statistics in Python. This is genuinely messy, long-horizon data: regime changes, gaps, and inflation adjustment all have to be handled before any model is trustworthy.</p>
+        <p>Real, public market data spanning a century and a half — Robert Shiller's price/earnings/CAPE series, plus CBOE (VIX) and LBMA (gold) data, pulled with a reproducible script. The key cleaning decision: recent months store <code>0.0</code> as a placeholder for fundamentals that aren't reported yet, so treating those as real zeros would distort every average — I converted them to missing. This is genuinely messy, long-horizon data: regime changes, gaps, and inflation adjustment all have to be handled before any model is trustworthy.</p>
       </section>
 
       <section class="case__section reveal">
         <h2>Approach &amp; method</h2>
         <ul>
-          <li>Built a <strong>forward 10-year real-return</strong> series with SQL window functions.</li>
+          <li>Built a <strong>forward 10-year real-return</strong> series and loaded the cleaned monthly table into <strong>SQLite</strong>, using a <code>LAG</code> window function to rank the best and worst calendar years.</li>
           <li>Regressed forward returns on starting valuation (<strong>CAPE</strong>) using OLS in <code>statsmodels</code>, reporting p-values and R².</li>
           <li>Quantified the long-run real growth rate, the maximum drawdown on record, and the <strong>stock–gold correlation</strong> as a diversification check.</li>
         </ul>
@@ -81,27 +111,54 @@
 
       <section class="case__section reveal">
         <h2>What I found</h2>
-        <ul>
-          <li>Valuation has historically tracked returns: a higher starting CAPE was followed by <strong>lower real returns over the next ten years</strong>, and the relationship is overwhelmingly significant (<strong>p ≈ 1e-40</strong>).</li>
-          <li>Today's CAPE sits in the <strong>top 5%</strong> of all readings on record.</li>
-          <li>Long-run real growth has been about <strong>2.4% per year</strong>.</li>
-          <li>The worst drawdown on record was <strong>−81%</strong> — the risk you accept for that growth.</li>
-          <li>Gold's correlation with stocks is <strong>near zero</strong>, making it a genuine diversifier.</li>
-        </ul>
+        <p>Once inflation is removed, the index's price has grown only about <strong>2.4% a year</strong> — most of the headline growth comes from inflation and reinvested dividends, so return expectations should be set accordingly.</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/stock-market/01_real_trend.png" alt="Real vs nominal S&P 500 on a log scale, 1871 to today" loading="lazy" />
+          <figcaption class="case__figcap">The real trend is steady but modest; inflation accounts for most of the apparent growth.</figcaption>
+        </figure>
+
+        <p>Starting valuation has tracked future returns: months with a <strong>higher CAPE were followed by lower real returns over the next decade</strong>, and the relationship is overwhelmingly significant (R² = 0.11, <strong>p ≈ 1e-40</strong>). Today's CAPE of 30.8 sits in the <strong>top 5%</strong> of all readings since 1881.</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/stock-market/05_cape_vs_forward_return.png" alt="Scatter of starting CAPE against the real return over the following ten years, with today's value marked" loading="lazy" />
+          <figcaption class="case__figcap">Each point is one month; the downward slope means a higher price paid was followed by a lower future return. Today's CAPE, marked in gold, is near the top of its range.</figcaption>
+        </figure>
+
+        <p>Large losses are a normal part of the record, not an exception — in real terms the market has fallen as much as <strong>81%</strong> from a previous peak (the early 1930s). That's the risk you accept for the growth.</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/stock-market/04_drawdowns.png" alt="Underwater drawdown chart showing real losses from previous peaks, worst reaching minus 81 percent" loading="lazy" />
+          <figcaption class="case__figcap">Deep drawdowns recur throughout the record, with the worst real loss reaching <strong>−81%</strong> (trough June 1932).</figcaption>
+        </figure>
+
+        <p>Gold's correlation with stocks is <strong>near zero</strong>, making it a genuine diversifier that has helped cushion those deep drawdowns.</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/stock-market/06_correlation.png" alt="Cross-asset correlation matrix of stocks, gold and other series" loading="lazy" />
+          <figcaption class="case__figcap">A near-zero stock–gold correlation is what makes gold a real diversifier rather than a redundant holding.</figcaption>
+        </figure>
+
         <div class="case__callout">
           <p>Valuation is a <strong>long-horizon signal, not a timing tool</strong>: it says a great deal about the next decade and almost nothing about the next month.</p>
         </div>
       </section>
 
       <section class="case__section reveal">
-        <h2>Why it matters</h2>
-        <p>Beyond the finance, this is a demonstration of the full analyst loop on hard data: wrangling century-scale series, using SQL window functions, applying <strong>proper statistical inference</strong> rather than eyeballing a chart — and, most importantly, turning the result into something a person can act on (set realistic return expectations, budget for drawdowns, diversify deliberately).</p>
+        <h2>Recommendation</h2>
+        <p>For a long-term investor, the data supports three practical steps:</p>
+        <ul>
+          <li><strong>Set return expectations</strong> around the below-average real returns implied by today's high valuation — not the recent past.</li>
+          <li><strong>Pair equities with low-correlation assets</strong> such as gold or bonds to soften the drawdowns the record shows are inevitable.</li>
+          <li><strong>Automate contributions and rebalancing</strong>, because the main risk the data exposes is behavioural: selling during the long stretches when the market is underwater.</li>
+        </ul>
+      </section>
+
+      <section class="case__section reveal">
+        <h2>Limitations &amp; next steps</h2>
+        <p>The regression is a simple linear fit, so its estimate at today's record valuation should be read as "below average" rather than a precise number. Useful extensions: a total-return series that includes reinvested dividends for a truer long-run figure, an out-of-sample backtest with confidence bands around the valuation signal, and a check of whether the same relationship holds across sectors and international markets.</p>
       </section>
 
       <section class="case__section reveal">
         <h2>Tech &amp; skills</h2>
         <ul class="tags tags--sm">
-          <li>Python</li><li>pandas</li><li>statsmodels (OLS)</li><li>SQLite window functions</li><li>matplotlib / seaborn</li><li>Shiller · CBOE · LBMA data</li>
+          <li>Python</li><li>pandas</li><li>statsmodels (OLS)</li><li>SQLite window functions</li><li>matplotlib / seaborn</li><li>Tableau / Power BI</li><li>Shiller · CBOE · LBMA data</li>
         </ul>
       </section>
 

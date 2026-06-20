@@ -65,7 +65,25 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
+  /* ---- Dashboard placeholder: don't navigate until a real link is set ---- */
+  document.querySelectorAll(".dash__cta.is-placeholder").forEach(function (el) {
+    el.addEventListener("click", function (e) { e.preventDefault(); });
+  });
+
   /* ---- Footer year ---- */
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ---- A small hello for anyone who opens the console ---- */
+  try {
+    console.log(
+      "%cHi — you opened the console.",
+      "font:600 13px/1.5 system-ui;color:#2f6b4f"
+    );
+    console.log(
+      "%cBuilt by hand — plain HTML, CSS and JS, no framework.\n" +
+      "If you're hiring an analyst who also ships, say hello: mericerler@gmail.com",
+      "color:#6b6b76;line-height:1.6"
+    );
+  } catch (e) {}
 })();

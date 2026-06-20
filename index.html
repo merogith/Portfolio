@@ -3,19 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meriç Erler — Data Analyst & Builder</title>
-  <meta name="description" content="Meriç Erler — Berlin-based data analyst who turns messy data into decisions and ships the tools that act on them. SQL, Power BI, Python, Salesforce, and production-quality software. EU work-authorized." />
+  <title>Meriç Erler — Data &amp; Business Intelligence Analyst, Berlin</title>
+  <meta name="description" content="Meriç Erler — data &amp; business-intelligence analyst in Berlin. I find what matters in messy data and make the decision clear. Case studies in finance, pharma and gaming, browser games I built, and one-to-one financial coaching." />
   <meta name="author" content="Meriç Erler" />
 
-  <meta property="og:title" content="Meriç Erler — Data Analyst & Builder" />
-  <meta property="og:description" content="I turn messy data into decisions — and build the tools that act on them. Berlin-based, EU work-authorized." />
+  <meta property="og:title" content="Meriç Erler — Data &amp; Business Intelligence Analyst" />
+  <meta property="og:description" content="Berlin-based analyst. I find the signal in messy data and make the call clear — in finance, pharma and gaming." />
   <meta property="og:type" content="website" />
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2333453c'/><text x='50' y='68' font-family='Georgia,serif' font-size='44' fill='%23faf9f7' text-anchor='middle'>ME</text></svg>" />
+
+  <!-- Set theme before first paint to avoid a flash -->
+  <script>try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -25,16 +28,12 @@
   <!-- ===== NAV ===== -->
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a href="#hero" class="nav__logo" aria-label="Meriç Erler — home">
-        <span class="nav__mark">ME</span>
-        <span class="nav__name">Meriç Erler</span>
-      </a>
+      <a href="#hero" class="nav__logo" aria-label="Meriç Erler — home">Meriç&nbsp;Erler</a>
 
       <nav class="nav__links" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#work">Work</a>
-        <a href="#research">Research</a>
+        <a href="#work">Data</a>
+        <a href="#games">Games</a>
         <a href="#coaching">Coaching</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -57,30 +56,20 @@
     <!-- ===== HERO ===== -->
     <section class="hero" id="hero">
       <div class="hero__inner reveal">
-        <p class="hero__eyebrow">Data Analyst · Berlin, Germany</p>
+        <p class="hero__eyebrow">Data &amp; business-intelligence analyst · Berlin</p>
         <h1 class="hero__title">
-          I turn messy data into <span class="grad">decisions</span> —<br />
-          and build the tools that act on them.
+          I find what actually matters in messy data — and make the decision clear.
         </h1>
         <p class="hero__lead">
-          Analyst across CRM &amp; marketing, investment research, and product —
-          fluent in SQL, Power BI, Salesforce and Python. I also ship tested,
-          production-quality software, so I stay close to the engineering that
-          data work usually only describes.
+          Most of my work is in finance, pharma and gaming — different fields, but the job's
+          the same: find the system underneath the mess and make it clear. I also build small,
+          tested browser games, which keeps me honest about how systems actually behave.
         </p>
 
         <div class="hero__badges">
-          <span class="badge badge--ok">🇪🇺 EU work-authorized</span>
+          <span class="badge badge--ok">EU work-authorized</span>
           <span class="badge">Available immediately</span>
           <span class="badge">English · Turkish</span>
-        </div>
-
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="#work">View my work</a>
-          <a class="btn btn--ghost" href="assets/CV_Meric_Erler.pdf" target="_blank" rel="noopener">
-            Download CV
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-          </a>
         </div>
 
         <ul class="hero__links" aria-label="Profiles">
@@ -97,7 +86,34 @@
       </div>
     </section>
 
-    <!-- ===== ABOUT ===== -->
+    <!-- ===== NAV CARDS (jump to the sections below) ===== -->
+    <section class="navcards reveal" aria-label="Explore the site">
+      <a class="navcard" href="#about">
+        <svg class="navcard__icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg>
+        <span class="navcard__title">About</span>
+        <p class="navcard__desc">The short version — who's behind the work.</p>
+      </a>
+      <a class="navcard" href="#work">
+        <svg class="navcard__icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v17a1 1 0 0 0 1 1h17"/><rect x="7" y="12" width="3" height="5" rx="0.5"/><rect x="12.5" y="8" width="3" height="9" rx="0.5"/><rect x="18" y="5" width="3" height="12" rx="0.5"/></svg>
+        <span class="navcard__title">Data projects</span>
+        <p class="navcard__desc">End-to-end analyses with a real recommendation.</p>
+        <span class="navcard__meta">3 case studies</span>
+      </a>
+      <a class="navcard" href="#games">
+        <svg class="navcard__icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+        <span class="navcard__title">Personal projects</span>
+        <p class="navcard__desc">Browser games I build and test like software.</p>
+        <span class="navcard__meta">4 games</span>
+      </a>
+      <a class="navcard" href="#coaching">
+        <svg class="navcard__icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2z"/></svg>
+        <span class="navcard__title">Financial coaching</span>
+        <p class="navcard__desc">Calmer, clearer money — one to one.</p>
+        <span class="navcard__meta">Free intro call</span>
+      </a>
+    </section>
+
+    <!-- ===== ABOUT (brief → full story) ===== -->
     <section class="section" id="about">
       <div class="section__head reveal">
         <span class="section__num">01</span>
@@ -106,154 +122,48 @@
       <div class="about reveal">
         <div class="about__body">
           <p>
-            I'm a data analyst based in Berlin who likes turning messy, real-world
-            data into decisions people actually act on. My path is a little unusual:
-            I started in <strong>environmental engineering at METU</strong>, moved
-            into business and finance with an <strong>M.Sc. in Berlin</strong>, and
-            along the way became the person teams rely on to make sense of their
-            data — CRM records across 70+ countries, equity valuations, and product
-            analytics for an early-stage startup.
+            I'm Meriç. I've always been curious about how things work — not just machines,
+            but people and the systems they build together. That curiosity is the thread
+            behind everything here.
           </p>
           <p>
-            The thread connecting all of it is the same: <strong>quantitative
-            analysis that drives a real decision</strong> — whether the units are
-            dollars, prescriptions, or µS/cm. I also <em>build</em>: I ship tested,
-            production-quality browser games on the side, which keeps me close to the
-            engineering that analysis usually only describes.
-          </p>
-          <p>
-            Lately I'm especially interested in how organizations actually
-            <strong>adopt AI</strong> — the subject of my master's thesis and a paper
-            currently under review. Work-authorized across the EU and available
-            immediately.
+            It took me from <strong>environmental engineering at METU</strong> to a
+            <strong>business and finance master's in Berlin</strong>, and into work across
+            equity research, pharmaceutical data, and early-stage edtech. The constant is
+            reading systems — financial, behavioural, technical — and making them clear
+            enough that someone can act on them.
           </p>
         </div>
+        <p class="about__more"><a class="inline-link" href="about.html">Read the full story →</a></p>
       </div>
     </section>
 
-    <!-- ===== SKILLS ===== -->
-    <section class="section" id="skills">
-      <div class="section__head reveal">
-        <span class="section__num">02</span>
-        <h2 class="section__title">Skills</h2>
-      </div>
-      <div class="skills reveal">
-        <div class="skill-group">
-          <h3>Data, BI &amp; AI</h3>
-          <ul class="tags">
-            <li>SQL</li><li>Power BI</li><li>Tableau</li><li>Salesforce (Lightning, Marketing Cloud)</li>
-            <li>Excel (Advanced)</li><li>Dashboards &amp; KPI reporting</li>
-            <li>Data cleaning · dedup · fuzzy matching</li><li>LLM-assisted analysis</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Analysis &amp; Methods</h3>
-          <ul class="tags">
-            <li>DCF &amp; financial modeling</li><li>Valuation &amp; target pricing</li>
-            <li>Equity &amp; market research</li><li>A/B testing</li>
-            <li>Regression &amp; hypothesis testing</li><li>Segmentation (clustering)</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Build &amp; Engineering</h3>
-          <ul class="tags">
-            <li>Python (pandas · scikit-learn · statsmodels)</li><li>JavaScript / TypeScript</li>
-            <li>React</li><li>HTML5 Canvas</li><li>Supabase / PostgreSQL</li>
-            <li>Vite</li><li>Testing (Vitest · Playwright)</li><li>Git &amp; CI/CD</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Ways of Working</h3>
-          <ul class="tags">
-            <li>Cross-functional collaboration</li><li>Cross-cultural teams</li>
-            <li>Stakeholder reporting</li><li>Presenting to non-technical teams</li>
-            <li>GDPR-aware data handling</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== EXPERIENCE ===== -->
-    <section class="section" id="experience">
-      <div class="section__head reveal">
-        <span class="section__num">03</span>
-        <h2 class="section__title">Experience</h2>
-      </div>
-      <ol class="timeline">
-        <li class="tl reveal">
-          <div class="tl__when">2024 — Present</div>
-          <div class="tl__what">
-            <h3>Independent Financial Coach <span class="tl__type">Freelance</span></h3>
-            <p class="tl__org">Independent · Berlin (Remote)</p>
-            <p>Advise a small client base on budgeting, saving, and investing fundamentals. <a class="inline-link" href="#coaching">More ↓</a></p>
-          </div>
-        </li>
-        <li class="tl reveal">
-          <div class="tl__when">Dec 2022 — Sep 2023</div>
-          <div class="tl__what">
-            <h3>Omnichannel Data Orchestration Intern</h3>
-            <p class="tl__org">Viatris Inc. · Germany (Remote)</p>
-            <ul>
-              <li>Maintained healthcare-professional records across CRM &amp; marketing platforms covering <strong>70+ countries</strong>, consolidating multiple sources into one master record per HCP.</li>
-              <li>Improved duplicate / same-name matching with fuzzy-matching and market-specific attributes, <strong>cutting manual validation by up to 40%</strong>.</li>
-              <li>Helped develop AI/ML-assisted deduplication; kept consent &amp; preference data GDPR-compliant in Salesforce Marketing Cloud.</li>
-            </ul>
-          </div>
-        </li>
-        <li class="tl reveal">
-          <div class="tl__when">Dec 2021 — Oct 2022</div>
-          <div class="tl__what">
-            <h3>Business Intelligence Analyst</h3>
-            <p class="tl__org">Saksı Kampüs · Turkey (Remote)</p>
-            <ul>
-              <li>Tracked engagement, retention, and content effectiveness for an early-stage edtech product via Google Analytics; analyzed Meta Ads to inform acquisition spend.</li>
-              <li>Produced the quantitative business plan, growth projections, and pitch deck behind the platform's seed equity-crowdfunding raise.</li>
-            </ul>
-          </div>
-        </li>
-        <li class="tl reveal">
-          <div class="tl__when">Jul 2021 — Sep 2021</div>
-          <div class="tl__what">
-            <h3>Sales &amp; Financial Analysis Intern</h3>
-            <p class="tl__org">Garanti BBVA Investment · İstanbul</p>
-            <ul>
-              <li>Built DCF valuation models and target prices for sell-side equity research (incl. Şişecam), cross-checked against comparable-company multiples.</li>
-              <li>Analyzed stock, macro, and sector data feeding the research desk's daily notes and the sales desk's trade ideas.</li>
-            </ul>
-          </div>
-        </li>
-        <li class="tl reveal">
-          <div class="tl__when">2016 — 2019</div>
-          <div class="tl__what">
-            <h3>Engineering &amp; Sustainability Internships</h3>
-            <p class="tl__org">Aqwadem Consulting · Coca-Cola — Ankara</p>
-            <ul>
-              <li>Feasibility analysis &amp; data collection for an EU IPA wastewater project; plant quality control and water-stewardship work (departmental sustainability award).</li>
-            </ul>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- ===== WORK / PROJECTS ===== -->
+    <!-- ===== DATA PROJECTS ===== -->
     <section class="section" id="work">
       <div class="section__head reveal">
-        <span class="section__num">04</span>
-        <h2 class="section__title">Selected Work</h2>
+        <span class="section__num">02</span>
+        <h2 class="section__title">Data projects</h2>
       </div>
 
-      <h3 class="work__group reveal">Data &amp; Analytics <span>— end-to-end, raw data to recommendation · click any card for the full case study</span></h3>
+      <p class="work__intro reveal">
+        Three analyses taken end to end — from raw, messy data to a recommendation a real
+        team could act on. Click any card for the full case study.
+      </p>
+
       <div class="cards">
 
         <article class="card reveal">
           <div class="card__top">
-            <span class="card__tag card__tag--data">Data</span>
+            <div class="card__tags">
+              <span class="card__tag card__tag--data">Data</span>
+              <span class="card__tag card__tag--finance">Finance</span>
+            </div>
             <a class="card__ext" href="https://github.com/merogith/DataAnalysis/tree/main/project-3-finance" target="_blank" rel="noopener" aria-label="View on GitHub">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
             </a>
           </div>
-          <h4 class="card__title"><a href="projects/stock-market.html">US Stock-Market Valuation &amp; Risk</a></h4>
-          <p class="card__desc">Analyzed <strong>150+ years</strong> of market history to test whether valuation predicts long-run returns — and quantify the risk you sign up for.</p>
+          <h3 class="card__title"><a href="projects/stock-market.html">US Stock-Market Valuation &amp; Risk</a></h3>
+          <p class="card__desc">Tested <strong>150+ years</strong> of market history to see whether valuation predicts long-run returns — and to put a number on the risk you sign up for.</p>
           <div class="card__stats">
             <span class="stat"><b>p ≈ 1e-40</b>valuation→returns</span>
             <span class="stat"><b>−81%</b>worst drawdown</span>
@@ -269,13 +179,16 @@
 
         <article class="card reveal">
           <div class="card__top">
-            <span class="card__tag card__tag--data">Data</span>
+            <div class="card__tags">
+              <span class="card__tag card__tag--data">Data</span>
+              <span class="card__tag card__tag--pharma">Pharma</span>
+            </div>
             <a class="card__ext" href="https://github.com/merogith/DataAnalysis/tree/main/project-1-pharma-crm" target="_blank" rel="noopener" aria-label="View on GitHub">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
             </a>
           </div>
-          <h4 class="card__title"><a href="projects/pharma-crm.html">Pharmaceutical CRM Sales Analytics</a></h4>
-          <p class="card__desc">Linked sales-call activity to prescriptions and segmented physicians into priority tiers — turning raw CRM data into where to spend the sales effort.</p>
+          <h3 class="card__title"><a href="projects/pharma-crm.html">Pharmaceutical CRM Sales Analytics</a></h3>
+          <p class="card__desc">Linked sales-call activity to prescriptions and sorted 600 physicians into priority tiers, so a rep's limited time goes where it actually pays off.</p>
           <div class="card__stats">
             <span class="stat"><b>r = 0.49</b>calls ↔ scripts</span>
             <span class="stat"><b>+5.5</b>scripts per call</span>
@@ -291,13 +204,16 @@
 
         <article class="card reveal">
           <div class="card__top">
-            <span class="card__tag card__tag--data">Data</span>
+            <div class="card__tags">
+              <span class="card__tag card__tag--data">Data</span>
+              <span class="card__tag card__tag--gaming">Gaming</span>
+            </div>
             <a class="card__ext" href="https://github.com/merogith/DataAnalysis/tree/main/project-2-game-economy" target="_blank" rel="noopener" aria-label="View on GitHub">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
             </a>
           </div>
-          <h4 class="card__title"><a href="projects/game-economy.html">Free-to-Play Game Economy &amp; Balance</a></h4>
-          <p class="card__desc">Measured retention curves, flagged overpowered items and economy inflation, and modeled which players convert to paying — the analytics a live-ops team runs on.</p>
+          <h3 class="card__title"><a href="projects/game-economy.html">Free-to-Play Game Economy &amp; Balance</a></h3>
+          <p class="card__desc">Measured retention, flagged overpowered items and economy inflation, and modeled which players convert to paying — the analysis a live-ops team runs on.</p>
           <div class="card__stats">
             <span class="stat"><b>47→18→4%</b>D1 / D7 / D30</span>
             <span class="stat"><b>61%</b>OP item win rate</span>
@@ -311,13 +227,24 @@
           </a>
         </article>
       </div>
+    </section>
 
-      <h3 class="work__group reveal">Games &amp; Software <span>— all four playable in the browser · Battle is the flagship</span></h3>
+    <!-- ===== PERSONAL PROJECTS / GAMES ===== -->
+    <section class="section" id="games">
+      <div class="section__head reveal">
+        <span class="section__num">03</span>
+        <h2 class="section__title">Personal projects</h2>
+      </div>
+      <p class="work__intro reveal">
+        I build games for the same reason I analyze data: to watch how a system behaves once
+        real people touch it. All four play in the browser, and I test them like production
+        software.
+      </p>
       <div class="cards">
 
         <article class="card card--flagship reveal">
           <div class="card__top">
-            <span class="card__tag card__tag--game">Game · flagship</span>
+            <span class="card__tag card__tag--game">Flagship</span>
             <div class="card__links">
               <a class="card__ext" href="https://merogith.github.io/battle/battle.html" target="_blank" rel="noopener" aria-label="Play live demo">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
@@ -328,12 +255,7 @@
             </div>
           </div>
           <h4 class="card__title"><a href="projects/battle.html">Battle</a> <span class="card__live">● live</span></h4>
-          <p class="card__desc">My most complete project: a Pokémon-style turn-based RPG with story mode, persistent saves, and <strong>online PvP</strong> over a Supabase backend — a full custom game engine refined across <strong>1,699+ commits</strong>.</p>
-          <div class="card__stats">
-            <span class="stat"><b>1,699+</b>commits</span>
-            <span class="stat"><b>online</b>PvP</span>
-            <span class="stat"><b>deterministic</b>replay tests</span>
-          </div>
+          <p class="card__desc">A Pokémon-style turn-based RPG with story mode, persistent saves, and <strong>online PvP</strong> over a Supabase backend — a full custom engine refined across <strong>1,699+ commits</strong>.</p>
           <ul class="tags tags--sm">
             <li>Vanilla JS engine</li><li>Supabase / PostgreSQL</li><li>Automated testing</li>
           </ul>
@@ -399,7 +321,7 @@
             </div>
           </div>
           <h4 class="card__title"><a href="projects/rocketio.html">RocketIO</a> <span class="card__live">● live</span></h4>
-          <p class="card__desc">A real-time hex-grid strategy game: 14 factions, a missile economy, and adaptive AI. <strong>No engine, no framework</strong> — tiles, units, and sound are all generated procedurally.</p>
+          <p class="card__desc">A real-time hex-grid strategy game: 14 factions, a missile economy, and adaptive AI. The tiles, units, and sound are all generated in code — no engine, no art assets.</p>
           <ul class="tags tags--sm">
             <li>Vanilla JS (ES modules)</li><li>HTML5 Canvas</li><li>WebAudio</li><li>CI</li>
           </ul>
@@ -410,93 +332,32 @@
       </div>
     </section>
 
-    <!-- ===== RESEARCH & ENGINEERING ===== -->
-    <section class="section" id="research">
-      <div class="section__head reveal">
-        <span class="section__num">05</span>
-        <h2 class="section__title">Research &amp; Engineering</h2>
-      </div>
-      <div class="cards cards--2">
-        <article class="card card--feature reveal">
-          <span class="card__tag card__tag--research">Research</span>
-          <h4 class="card__title">Adoption of Generative AI in Pharmaceutical Marketing</h4>
-          <p class="card__desc">My M.Sc. thesis (graded <strong>95/100</strong>) used the Technology Acceptance Model to study how marketing teams actually adopt generative AI. A co-authored manuscript is currently under review at <strong>ADCAIJ</strong> (Erler, Kouatly &amp; Saxena).</p>
-          <ul class="tags tags--sm">
-            <li>Technology Acceptance Model</li><li>Survey design</li><li>Quantitative analysis</li>
-          </ul>
-        </article>
-
-        <article class="card card--feature reveal">
-          <span class="card__tag card__tag--eng">Engineering</span>
-          <h4 class="card__title">Sludgendary — Industrial Wastewater System Design</h4>
-          <p class="card__desc">Award-winning METU capstone (<strong>Best Capstone Design Project, AA / 4.0</strong>): designed and compared three full treatment scenarios for a 144-facility industrial zone — hydraulic design, P&amp;ID, cost estimation, and NPV — to recommend the optimal solution.</p>
-          <div class="card__stats">
-            <span class="stat"><b>$0.093/m³</b>winning scenario</span>
-            <span class="stat"><b>NPV $3.24M</b>MBR design</span>
-            <span class="stat"><b>144</b>facilities served</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ===== EDUCATION & HONORS ===== -->
-    <section class="section" id="education">
-      <div class="section__head reveal">
-        <span class="section__num">06</span>
-        <h2 class="section__title">Education &amp; Honors</h2>
-      </div>
-      <div class="edu reveal">
-        <div class="edu__col">
-          <h3>Education</h3>
-          <div class="edu__item">
-            <p class="edu__deg">M.Sc. Corporate Management</p>
-            <p class="edu__org">University of Europe for Applied Sciences · Berlin · 2022–2024</p>
-            <p class="edu__note">Final grade 88/100 · Thesis 95/100</p>
-          </div>
-          <div class="edu__item">
-            <p class="edu__deg">B.Sc. Environmental Engineering</p>
-            <p class="edu__org">Middle East Technical University (METU) · Ankara · 2013–2021</p>
-            <p class="edu__note">AA (4.0) capstone — full-cycle system design</p>
-          </div>
-        </div>
-        <div class="edu__col">
-          <h3>Honors &amp; Certifications</h3>
-          <ul class="honors">
-            <li><strong>Best Capstone Design Project</strong> — top project, METU Environmental Engineering Design</li>
-            <li><strong>Migrapreneur AI Training Scholarship</strong> (2025) — AI Opportunity Fund: Europe (Google &amp; Centre for Public Impact)</li>
-            <li><strong>Best Summer Practice Award</strong> — METU Dept. of Environmental Engineering</li>
-            <li><strong>Google AI Essentials</strong> — Coursera (2025)</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FINANCIAL COACHING ===== -->
+    <!-- ===== FINANCIAL COACHING (teaser → standalone site) ===== -->
     <section class="section" id="coaching">
       <div class="section__head reveal">
-        <span class="section__num">07</span>
-        <h2 class="section__title">Financial Coaching</h2>
+        <span class="section__num">04</span>
+        <h2 class="section__title">Financial coaching</h2>
       </div>
       <div class="coach reveal">
         <div class="coach__body">
           <p class="coach__lead">
-            Alongside analytics, I coach individuals on the fundamentals of personal
-            finance — translating the same rigor I bring to financial modeling into
-            plain, practical guidance you can act on.
+            Money isn't only math. It's stress, habits, and the stories we pick up about it
+            along the way. I work with people one-to-one to build a calmer, clearer
+            relationship with money — through awareness, plain financial education, and a
+            plan we shape around your actual life.
           </p>
           <ul class="coach__list">
-            <li><strong>Budgeting &amp; cash flow</strong> — see where money actually goes and build a plan that holds.</li>
-            <li><strong>Saving &amp; safety nets</strong> — emergency funds, goals, and habits that compound.</li>
-            <li><strong>Investing fundamentals</strong> — the principles, risks, and long-run evidence — no hype.</li>
+            <li><strong>Understand your money</strong> — where the worry and the habits really come from, without judgment.</li>
+            <li><strong>Learn the fundamentals</strong> — budgeting, saving, and how investing actually works, in plain language.</li>
+            <li><strong>A plan that fits you</strong> — regular check-ins and steady support while the habit forms.</li>
           </ul>
-          <p class="coach__note">Independent coaching since 2024 · remote · sessions in English or Turkish.</p>
+          <p class="coach__note">Coaching and education — not regulated financial advice. I don't sell products or pick your investments. Sessions in English or Turkish.</p>
         </div>
         <aside class="coach__cta">
-          <h3>Work with me</h3>
-          <p>Tell me where you're starting from and what you'd like to change. I'll reply with how I can help and next steps.</p>
-          <!-- To use a booking link (Calendly / Tally / Google Form) instead of email, swap the href below. -->
-          <a class="btn btn--primary btn--lg" href="mailto:mericerler@gmail.com?subject=Financial%20Coaching%20Inquiry&body=Hi%20Meri%C3%A7%2C%0A%0AI%27d%20like%20to%20learn%20about%20your%20financial%20coaching.%0A%0AMy%20situation%3A%20%0AWhat%20I%27d%20like%20help%20with%3A%20">Apply for coaching</a>
-          <p class="coach__small">Prefer a form or calendar booking? I can wire one up — just say the word.</p>
+          <h3>Start with a free call</h3>
+          <p>The coaching has its own home, with the full story and how to book. The first conversation is free, and there's no pitch — just whether I can help.</p>
+          <a class="btn btn--primary btn--lg" href="coaching/index.html">Visit the coaching site →</a>
+          <p class="coach__small">Online · remote · wherever you are.</p>
         </aside>
       </div>
     </section>
@@ -504,10 +365,10 @@
     <!-- ===== CONTACT ===== -->
     <section class="section section--contact" id="contact">
       <div class="contact reveal">
-        <span class="section__num">08</span>
+        <span class="section__num">05</span>
         <h2 class="contact__title">Let's talk.</h2>
         <p class="contact__lead">
-          Open to data analyst, BI, and analytics roles across the EU and remote.
+          Open to data analyst, BI and analytics roles across the EU and remote.
           EU work-authorized, available immediately.
         </p>
         <div class="contact__actions">
@@ -518,6 +379,11 @@
           <li><a href="https://www.linkedin.com/in/mericerler" target="_blank" rel="noopener">LinkedIn</a></li>
           <li><a href="https://github.com/merogith" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
+        <p class="contact__fineprint">
+          References, transcripts and certificates are available to hiring teams
+          <a class="inline-link" href="mailto:mericerler@gmail.com?subject=Document%20request">on request</a> —
+          kept private out of respect for my referees.
+        </p>
       </div>
     </section>
   </main>

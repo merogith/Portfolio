@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Free-to-Play Game Economy &amp; Balance — Meriç Erler</title>
   <meta name="description" content="Is the game economy balanced, which items are overpowered, and who pays? Economy accounting, z-tests, retention cohorts, and a logistic payer model (AUC 0.80)." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232f6b4f'/><text x='50' y='68' font-family='Georgia,serif' font-size='44' fill='%23faf8f3' text-anchor='middle'>ME</text></svg>" />
+  <script>try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -19,8 +20,10 @@
         <span class="nav__mark">ME</span><span class="nav__name">Meriç Erler</span>
       </a>
       <nav class="nav__links" aria-label="Primary">
-        <a href="../index.html#work">Work</a>
-        <a href="../index.html#about">About</a>
+        <a href="../about.html">About</a>
+        <a href="../index.html#work">Data</a>
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#coaching">Coaching</a>
         <a href="../index.html#contact">Contact</a>
       </nav>
       <div class="nav__actions">
@@ -48,6 +51,7 @@
         <div class="case__meta">
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/blob/main/project-2-game-economy/analysis.ipynb" target="_blank" rel="noopener">View the notebook</a>
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/tree/main/project-2-game-economy" target="_blank" rel="noopener">GitHub folder</a>
+          <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/blob/main/project-2-game-economy/DASHBOARD_GUIDE.md" target="_blank" rel="noopener">Dashboard guide</a>
         </div>
       </header>
 
@@ -55,51 +59,106 @@
         <span class="stat"><b>~63%</b>coin recovery (inflation)</span>
         <span class="stat"><b>61%</b>Phoenix Blade win rate</span>
         <span class="stat"><b>47→18→4%</b>retention D1/D7/D30</span>
+        <span class="stat"><b>5.8%</b>payer rate</span>
         <span class="stat"><b>AUC 0.80</b>payer model</span>
       </div>
 
+      <!-- ============================================================
+           INTERACTIVE DASHBOARD
+           🔗 TO ADD THE LIVE LINK: replace href="#" below with your
+           published Tableau Public / Power BI URL, then DELETE the
+           class "is-placeholder" so it becomes a live button.
+           ============================================================ -->
+      <section class="dash reveal" aria-label="Interactive dashboard">
+        <span class="dash__eyebrow">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+          Interactive dashboard
+        </span>
+        <h2 class="dash__title">Live-Ops Health dashboard</h2>
+        <p class="dash__lead">A live BI view of the game's health: <strong>the economy is drifting toward pay-to-win while half of new players quit on Day 1.</strong> Filter by platform and acquisition channel to see currency flow, item balance and monetization at a glance.</p>
+        <ul class="dash__kpis">
+          <li><b>5.8%</b><span>Payer rate</span></li>
+          <li><b>18%</b><span>D7 retention</span></li>
+          <li><b>~63%</b><span>Sink recovery</span></li>
+          <li><b>AUC 0.80</b><span>Payer model</span></li>
+        </ul>
+        <div class="dash__actions">
+          <a class="btn btn--primary dash__cta is-placeholder" href="#" target="_blank" rel="noopener">Open live dashboard</a>
+          <a class="btn btn--ghost" href="https://github.com/merogith/DataAnalysis/blob/main/project-2-game-economy/DASHBOARD_GUIDE.md" target="_blank" rel="noopener">How it's built →</a>
+        </div>
+        <p class="dash__note">Built in Tableau / Power BI on a star-schema export (fact_daily_economy + dim_item/player/date). Live link coming soon.</p>
+      </section>
+
       <section class="case__section reveal">
         <h2>The question</h2>
-        <p>Four live-ops questions decide the health of a free-to-play game: is the in-game <strong>economy balanced</strong>, are any <strong>items overpowered</strong>, how well does the game <strong>retain</strong> players, and who <strong>converts to paying</strong>? This project answers all four from the data.</p>
+        <p>Three live-ops questions decide the health of a free-to-play game: is the in-game <strong>economy balanced</strong> (do faucets match sinks?), are any <strong>items overpowered</strong> and is the game pay-to-win, and what drives players to <strong>stay and pay</strong>? This project answers all three from the telemetry.</p>
       </section>
 
       <section class="case__section reveal">
         <h2>The data</h2>
-        <p>Synthetic gameplay, economy, and player data, generated with seeded scripts that add realistic noise — close enough to a real telemetry pipeline that the cleaning and modeling steps are meaningful.</p>
+        <p>Realistic <strong>synthetic telemetry</strong> — players, sessions, matches, a soft-currency ledger and purchases — generated by one seeded script that injects deliberate messiness (missing values, duplicate rows, mixed-case names, two timestamp formats, impossible negatives). Real F2P telemetry is proprietary and privacy-sensitive, so a reproducible synthetic generator was the practical path, and the cleaning steps are genuine.</p>
       </section>
 
       <section class="case__section reveal">
         <h2>Approach &amp; method</h2>
         <ul>
-          <li><strong>Economy accounting:</strong> compared coins minted against coins removed by "sinks" to measure inflation.</li>
-          <li><strong>Balance:</strong> proportion z-tests on item win rates to find statistically overpowered items.</li>
+          <li><strong>Economy accounting:</strong> compared coins minted (faucets) against coins removed (sinks) to measure inflation, with a SQL <code>SUM() OVER (PARTITION BY …)</code> running wallet balance.</li>
+          <li><strong>Item balance:</strong> proportion z-tests with 95% confidence intervals vs the fair 50% line to find statistically over/under-powered items.</li>
           <li><strong>Retention:</strong> built D1 / D7 / D30 cohort curves.</li>
-          <li><strong>Monetization:</strong> logistic regression to predict paying players, scored by AUC.</li>
+          <li><strong>Monetization:</strong> a funnel plus a logistic-regression payer model on first-3-day behaviour, scored by AUC and accuracy.</li>
         </ul>
       </section>
 
       <section class="case__section reveal">
         <h2>What I found</h2>
-        <ul>
-          <li>The economy runs a <strong>mild inflation</strong> — sinks recover only ~63% of the coins minted.</li>
-          <li>Two premium items are <strong>statistically overpowered</strong>; the Phoenix Blade wins <strong>61%</strong> of matches.</li>
-          <li>Retention drops sharply after day one: <strong>47% → 18% → 4%</strong> at D1/D7/D30.</li>
-          <li>A logistic model predicts paying players with <strong>AUC 0.80</strong>.</li>
-        </ul>
+        <p>The economy is <strong>mildly inflationary</strong> — sinks recover only ~63% of every coin minted, so wallets steadily swell and the soft currency slowly loses value (net +6.8M coins over the window).</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/game-economy/03_economy_flow.png" alt="Currency faucets versus sinks over time, with a growing cumulative surplus" loading="lazy" />
+          <figcaption class="case__figcap">Faucets out-pace sinks and the surplus only grows — the signature of mild inflation.</figcaption>
+        </figure>
+
+        <p>Two premium items are <strong>statistically overpowered</strong> — Phoenix Blade wins 61.3% and Aegis Shield 59.4% (confidence intervals entirely above 50%, p ≈ 0). Because both are paid, the game reads as mildly <strong>pay-to-win</strong>; Rusty Dagger is the opposite — an underpowered starter trap at 41.8%.</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/game-economy/04_item_balance.png" alt="Item win rates with 95% confidence intervals against a fair 50% line" loading="lazy" />
+          <figcaption class="case__figcap">Bars are 95% confidence intervals; the dashed line is the fair 50%. Two premium items sit clearly above it.</figcaption>
+        </figure>
+
+        <p>Retention drops hard after the first day — <strong>D1 47%, D7 18%, D30 4%</strong>. About half of installs never return on day one, but the players who survive it are sticky, so the biggest lever is the first session.</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/game-economy/06_retention_curve.png" alt="Retention curve showing a sharp drop after day one" loading="lazy" />
+          <figcaption class="case__figcap">About half of installs never return on day 1 — the steepest part of the whole funnel.</figcaption>
+        </figure>
+
+        <p>Monetization is small but <strong>predictable</strong>: only 5.8% of players ever pay (ARPPU $15.61), but a logistic model predicts payers from first-3-day behaviour alone with <strong>AUC 0.80</strong> and ~74% accuracy.</p>
+        <figure class="case__figure">
+          <img src="../assets/charts/game-economy/08_payer_model.png" alt="ROC curve and feature importance for the logistic payer-prediction model" loading="lazy" />
+          <figcaption class="case__figcap">Payers are sharply distinguished by early engagement — enough to target a fair early offer.</figcaption>
+        </figure>
+
         <div class="case__callout">
           <p>Every finding maps to an action: <strong>add coin sinks, nerf two items, fix the day-1 drop-off, and target the players the model flags.</strong></p>
         </div>
       </section>
 
       <section class="case__section reveal">
-        <h2>Why it matters</h2>
-        <p>This is product / live-ops analytics end to end — hypothesis testing, cohort analysis, and predictive modeling tied to concrete game-design and monetization levers. It also pairs naturally with the games I build, so I understand both the telemetry and the system generating it.</p>
+        <h2>Recommendation</h2>
+        <ul>
+          <li><strong>Re-balance the economy</strong> — add or deepen a coin sink (cosmetics, repairs, a battle pass) so sinks recover ~90–100% of faucets, and trim late-game faucet creep. Target net daily flow near zero.</li>
+          <li><strong>Nerf the two overpowered premium items</strong> toward 50% to kill the pay-to-win perception, and buff Rusty Dagger so the starter weapon isn't a trap.</li>
+          <li><strong>Attack the D1 drop first</strong> with better onboarding, a guaranteed early win, and a D1 login reward — a few points of D1 cascade into every later metric.</li>
+          <li><strong>Target likely payers early</strong> using the model: a well-timed, fair first offer to high-propensity players in their first days.</li>
+        </ul>
+      </section>
+
+      <section class="case__section reveal">
+        <h2>Limitations &amp; next steps</h2>
+        <p>The findings rest on synthetic data, so the methods matter more than the exact numbers. Next I'd design an A/B test for the sink and onboarding changes with explicit guardrail metrics, move from "ever pays" to predicted LTV with a churn-timing survival model, and track item balance over time with a win-rate control chart so new content can't silently break balance.</p>
       </section>
 
       <section class="case__section reveal">
         <h2>Tech &amp; skills</h2>
         <ul class="tags tags--sm">
-          <li>Python</li><li>pandas</li><li>scikit-learn (logistic regression)</li><li>proportion z-tests</li><li>SQLite window functions</li><li>matplotlib / seaborn</li>
+          <li>Python</li><li>pandas</li><li>scikit-learn (logistic regression)</li><li>proportion z-tests</li><li>SQLite window functions</li><li>matplotlib / seaborn</li><li>Tableau / Power BI</li>
         </ul>
       </section>
 
