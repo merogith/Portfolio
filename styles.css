@@ -136,6 +136,10 @@ h1, h2, h3, h4 { font-family: var(--serif); line-height: 1.18; letter-spacing: -
   background: var(--accent); transition: width .25s ease;
 }
 .nav__links a:hover::after { width: 100%; }
+.nav__links a.is-active { color: var(--text); }
+.nav__links a.is-active::after { width: 100%; }
+/* skip-link lands on <main> without drawing a focus box */
+main[tabindex="-1"]:focus { outline: none; }
 .nav__actions { display: flex; align-items: center; gap: 10px; }
 
 .theme-toggle {

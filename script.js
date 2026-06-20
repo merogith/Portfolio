@@ -82,6 +82,35 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
+  /* ---- Scroll-spy: highlight the nav link for the section in view ---- */
+  const spyLinks = Array.from(document.querySelectorAll('.nav__links a[href^="#"]'));
+  const spyMap = new Map();
+  spyLinks.forEach(function (a) {
+    const id = a.getAttribute("href").slice(1);
+    const sec = id && document.getElementById(id);
+    if (sec) spyMap.set(sec, a);
+  });
+  if (spyMap.size && "IntersectionObserver" in window) {
+    const spy = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          spyLinks.forEach(function (l) {
+            l.classList.remove("is-active");
+            l.removeAttribute("aria-current");
+          });
+          const link = spyMap.get(entry.target);
+          if (link) {
+            link.classList.add("is-active");
+            link.setAttribute("aria-current", "true");
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    spyMap.forEach(function (_l, sec) { spy.observe(sec); });
+  }
+
   /* ---- Dashboard placeholder: don't navigate until a real link is set ---- */
   document.querySelectorAll(".dash__cta.is-placeholder").forEach(function (el) {
     el.addEventListener("click", function (e) { e.preventDefault(); });
