@@ -34,15 +34,32 @@
   const burger = document.getElementById("navBurger");
   const links = document.querySelector(".nav__links");
   if (burger && links) {
+    const closeMenu = function () {
+      links.classList.remove("is-open");
+      burger.setAttribute("aria-expanded", "false");
+    };
     burger.addEventListener("click", function () {
       const open = links.classList.toggle("is-open");
       burger.setAttribute("aria-expanded", String(open));
     });
     links.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () {
-        links.classList.remove("is-open");
-        burger.setAttribute("aria-expanded", "false");
-      });
+      a.addEventListener("click", closeMenu);
+    });
+    /* Close on Escape, and on a click/tap outside the menu */
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && links.classList.contains("is-open")) {
+        closeMenu();
+        burger.focus();
+      }
+    });
+    document.addEventListener("click", function (e) {
+      if (
+        links.classList.contains("is-open") &&
+        !links.contains(e.target) &&
+        !burger.contains(e.target)
+      ) {
+        closeMenu();
+      }
     });
   }
 
@@ -63,6 +80,35 @@
     revealEls.forEach(function (el) { io.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+
+  /* ---- Scroll-spy: highlight the nav link for the section in view ---- */
+  const spyLinks = Array.from(document.querySelectorAll('.nav__links a[href^="#"]'));
+  const spyMap = new Map();
+  spyLinks.forEach(function (a) {
+    const id = a.getAttribute("href").slice(1);
+    const sec = id && document.getElementById(id);
+    if (sec) spyMap.set(sec, a);
+  });
+  if (spyMap.size && "IntersectionObserver" in window) {
+    const spy = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          spyLinks.forEach(function (l) {
+            l.classList.remove("is-active");
+            l.removeAttribute("aria-current");
+          });
+          const link = spyMap.get(entry.target);
+          if (link) {
+            link.classList.add("is-active");
+            link.setAttribute("aria-current", "true");
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    spyMap.forEach(function (_l, sec) { spy.observe(sec); });
   }
 
   /* ---- Dashboard placeholder: don't navigate until a real link is set ---- */
