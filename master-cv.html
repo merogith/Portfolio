@@ -95,17 +95,12 @@
       </div>
     </header>
 
-    <!-- ===== PROFILE / SUMMARY ===== -->
-    <section class="case__section reveal">
-      <h2>Profile</h2>
-      <p>
-        Analyst and builder in Berlin. I turn messy, half-missing data into decisions a team
-        can act on — three years across pharma, equity research and edtech, with SQL, Python
-        and BI tooling. The same instinct runs through everything I make: find the structure
-        under the mess and make it clear enough to act on. I also design and ship tested
-        browser games, so I read systems from both the data and the build.
-      </p>
-    </section>
+    <!-- ===== NO PROFILE / NO SKILLS — BY DESIGN =====
+         This is the detailed background CV. Source of truth: MASTER-CV.md.
+         It intentionally has NO Profile and NO Skills section — those belong only on the
+         tailored, per-job one-pager (see one-pager-cv.html), written fresh per application.
+         Do NOT add them here, even on an "improve the CV" pass. Keep every fact in sync with
+         MASTER-CV.md; facts flow one way: MASTER-CV.md -> this file -> tailored one-pagers. -->
 
     <!-- ===== PROFESSIONAL EXPERIENCE ===== -->
     <section class="case__section reveal">
@@ -222,72 +217,104 @@
     <!-- ===== DATA PROJECTS ===== -->
     <section class="case__section reveal">
       <h2>Data projects</h2>
-      <p class="work__intro" style="margin:-6px 0 18px;">Full analyses taken from raw, messy data to a clear recommendation. Case studies on the <a class="inline-link" href="index.html#work">portfolio</a>.</p>
+      <p class="work__intro" style="margin:-6px 0 18px;">Full analyses taken from raw, messy data to a clear recommendation — the question, the cleaning, the method and the call. Interactive write-ups on the <a class="inline-link" href="index.html#work">portfolio</a>. Synthetic-data studies are noted; the methods are real, the figures illustrative.</p>
 
       <div class="cv-entry">
         <div class="cv-entry__head">
           <span class="cv-entry__role"><a href="projects/stock-market.html">US Stock-Market Valuation &amp; Risk</a></span>
-          <span class="cv-entry__meta">Python · OLS · SQL</span>
+          <span class="cv-entry__meta">Python · OLS · SQL · Tableau</span>
         </div>
         <p class="cv-entry__org">150+ years of real market data — does valuation predict long-run returns, and how much risk do you sign up for?</p>
         <ul class="cv-entry__bullets">
-          <li>Higher valuation (CAPE) predicts <strong>lower</strong> forward 10-year real returns — overwhelmingly significant (<strong>p ≈ 1e-40</strong>); today's reading sits in the top 5% of history.</li>
-          <li>Quantified tail risk (worst real drawdown <strong>−81%</strong>) and diversification (stock–gold correlation ≈ 0).</li>
+          <li>Pulled Robert Shiller's price / earnings / <strong>CAPE</strong> series plus CBOE (VIX) and LBMA (gold) with a reproducible script; the cleaning call that mattered — recent months store <code>0.0</code> as a placeholder for unreported fundamentals, so I set those to missing rather than let them drag every average down.</li>
+          <li>Built a forward 10-year real-return series in <strong>SQLite</strong> (a <code>LAG</code> window function to rank the best and worst years) and regressed forward returns on starting CAPE with <strong>OLS in statsmodels</strong>.</li>
+          <li>Higher valuation tracks lower forward returns — statistically clear but <strong>R² = 0.11</strong> (a real signal worth ~a tenth of the variation, not a market-timing tool); today's CAPE of 30.8 sits in the top 5% since 1881.</li>
+          <li>Quantified the price of admission: real growth of only ~<strong>2.4%/yr</strong> once inflation is stripped, a worst real drawdown of <strong>−81%</strong> (trough June 1932), and a stock–gold correlation ≈ 0 — a genuine diversifier.</li>
+          <li>Shipped as a Python notebook <em>and</em> an interactive <strong>Tableau</strong> dashboard on a star-schema export.</li>
         </ul>
-        <ul class="tags tags--sm"><li>Python</li><li>statsmodels (OLS)</li><li>SQL window fns</li><li>matplotlib</li></ul>
+        <ul class="tags tags--sm"><li>Python</li><li>statsmodels (OLS)</li><li>SQL window fns</li><li>SQLite</li><li>Tableau</li><li>matplotlib</li></ul>
       </div>
 
       <div class="cv-entry">
         <div class="cv-entry__head">
           <span class="cv-entry__role"><a href="projects/pharma-crm.html">Pharmaceutical CRM Sales Analytics</a></span>
-          <span class="cv-entry__meta">Python · scikit-learn · SQL</span>
+          <span class="cv-entry__meta">Python · scikit-learn · SQL · Tableau</span>
         </div>
-        <p class="cv-entry__org">Do sales calls drive prescriptions, and where should a rep spend their limited time across 600 physicians?</p>
+        <p class="cv-entry__org">Do sales calls drive prescriptions, and where should a rep spend limited time across 600 physicians? A shareable version of my real Viatris CRM work — on synthetic data.</p>
         <ul class="cv-entry__bullets">
-          <li>Calls move scripts (<strong>r = 0.49</strong>, +5.5 scripts per extra call); KMeans isolated a <strong>99-doctor high-potential segment</strong> to prioritise.</li>
-          <li>Ranked doctors per region with SQL window functions into an actionable call list — mirrors my CRM data work at Viatris.</li>
+          <li>Ran on a synthetic 600-physician CRM dataset from seeded scripts that deliberately inject real-world mess (duplicates, missing values, mixed date / text formats), so the cleaning steps are real, not decorative.</li>
+          <li>Tested the call → prescription link with correlation and OLS, segmented doctors with <strong>KMeans</strong>, and built a ranked priority list with <code>RANK() OVER (PARTITION BY region …)</code>.</li>
+          <li>Calls move scripts — <strong>r = 0.49</strong>, about <strong>+5.5 scripts per extra call</strong> — and prescribing is concentrated (top 20% of doctors write ~a third of scripts), so <em>which</em> doctors a rep visits matters as much as how many.</li>
+          <li>Isolated a <strong>99-doctor "high-potential growth" segment</strong> to prioritise; rep output ranged from 6,007 scripts down to 154 — a clear coaching signal. Turned "visit more doctors" into a ranked list of 99 to visit first.</li>
+          <li>Shipped as a notebook plus a live <strong>Tableau</strong> sales-performance dashboard.</li>
         </ul>
-        <ul class="tags tags--sm"><li>Python</li><li>scikit-learn (KMeans)</li><li>statsmodels</li><li>SQLite</li></ul>
+        <ul class="tags tags--sm"><li>Python</li><li>scikit-learn (KMeans)</li><li>statsmodels</li><li>SQL (RANK)</li><li>SQLite</li><li>Tableau</li></ul>
       </div>
 
       <div class="cv-entry">
         <div class="cv-entry__head">
           <span class="cv-entry__role"><a href="projects/game-economy.html">Free-to-Play Game Economy &amp; Balance</a></span>
-          <span class="cv-entry__meta">Python · logistic reg. · z-tests</span>
+          <span class="cv-entry__meta">Python · logistic reg. · z-tests · Tableau</span>
         </div>
-        <p class="cv-entry__org">Is the economy balanced, which items are overpowered, and who actually pays?</p>
+        <p class="cv-entry__org">Is the economy balanced, which items are overpowered, and who actually pays? On synthetic telemetry I generated myself.</p>
         <ul class="cv-entry__bullets">
-          <li>Diagnosed mild inflation (sinks recover ~63% of coins) and two statistically <strong>overpowered</strong> premium items (61% win rate, z-tests).</li>
-          <li>Modelled D1/D7/D30 retention (47/18/4%) and predicted paying players at <strong>AUC 0.80</strong>.</li>
+          <li>Diagnosed mild inflation (sinks recover ~<strong>63%</strong> of coins) and two statistically <strong>overpowered</strong> premium items — the Phoenix Blade at a 61% win rate, confirmed with proportion z-tests.</li>
+          <li>Modelled retention <strong>D1/D7/D30 at 47 / 18 / 4%</strong>; only 5.8% of players ever pay, but predictably — a logistic model flags likely payers from their first three days at <strong>AUC 0.80</strong>, so live-ops effort can be aimed where it converts.</li>
+          <li>The closest of my analyses to live-ops balancing: from exploit-grade items and currency inflation through to retention curves and payer prediction.</li>
+          <li>Shipped as a notebook plus a <strong>Tableau</strong> "Game Economy Health" dashboard.</li>
         </ul>
-        <ul class="tags tags--sm"><li>Python</li><li>logistic regression</li><li>proportion z-tests</li><li>SQL</li></ul>
+        <ul class="tags tags--sm"><li>Python</li><li>logistic regression</li><li>proportion z-tests</li><li>SQL</li><li>Tableau</li></ul>
       </div>
 
       <div class="cv-entry">
         <div class="cv-entry__head">
           <span class="cv-entry__role"><a href="https://merogith.github.io/IdleBankTycoonCaseStudy/" target="_blank" rel="noopener">Idle Bank Tycoon — Economy Design Case Study</a></span>
-          <span class="cv-entry__meta">Spreadsheet model · A/B design</span>
+          <span class="cv-entry__meta">Excel · Google Sheets · A/B design</span>
         </div>
-        <p class="cv-entry__org">A self-directed, parameter-driven economy model and report built as an application case study.</p>
+        <p class="cv-entry__org">A self-directed, parameter-driven economy model and report built as an application case study — modelled on public estimates, not the studio's internal data.</p>
         <ul class="cv-entry__bullets">
-          <li>Reconstructed the income-vs-upgrade-cost curve over 60 levels with <strong>400+ live formulas</strong> from a single source-of-truth tab, diagnosing a late-game cash surplus.</li>
-          <li>Designed a soft-currency sink and income-scaled ad tuning, framed as <strong>A/B tests</strong> with retention guardrails — sourced data kept transparently separate from assumptions.</li>
+          <li>Reconstructed the income-vs-upgrade-cost curve over 60 bank levels with <strong>400+ live formulas across 7 tabs</strong> from a single source-of-truth tab, diagnosing a late-game cash glut.</li>
+          <li>Designed two live-ops levers — a <strong>Loan Desk</strong> (a liquidity lock with a hard-currency sink) and income-scaled ad tuning — each with anti-inflation and retention guardrails, framed as <strong>A/B tests</strong> with assumptions kept transparently separate from data.</li>
+          <li>Pencils out to a blended <strong>~+15.5% ARPDAU</strong> (ad tuning +23% sourced, +41.7% as a labelled modelled ceiling). The judgement I'd defend over the number: ship the lower-risk ad lever first, treat the loan as a retention bet to be <em>measured</em>.</li>
         </ul>
+        <ul class="tags tags--sm"><li>Excel</li><li>Google Sheets</li><li>parameter-driven model</li><li>sensitivity analysis</li><li>A/B design</li></ul>
       </div>
     </section>
 
     <!-- ===== GAME PROJECTS ===== -->
     <section class="case__section reveal">
       <h2>Game projects</h2>
-      <p class="work__intro" style="margin:-6px 0 18px;">Browser games built and tested like production software. All playable; details on the <a class="inline-link" href="index.html#games">portfolio</a>.</p>
+      <p class="work__intro" style="margin:-6px 0 18px;">Browser games I designed, coded, balanced and tested solo, on engines I wrote myself — built like production software. All playable; full write-ups on the <a class="inline-link" href="index.html#games">portfolio</a>.</p>
 
       <div class="cv-entry">
         <div class="cv-entry__head">
           <span class="cv-entry__role"><a href="projects/battle.html">Battle</a> — turn-based RPG with online PvP</span>
           <span class="cv-entry__meta">Vanilla JS · Supabase</span>
         </div>
-        <p class="cv-entry__org">A Pokémon-style RPG with story mode, persistent saves and real-time online multiplayer, on a custom engine I built from the ground up.</p>
-        <ul class="tags tags--sm"><li>Vanilla JS engine</li><li>Supabase / PostgreSQL</li><li>Automated testing</li></ul>
+        <p class="cv-entry__org">A Pokémon-style RPG with story mode, persistent saves and real-time online multiplayer, on a custom engine built from the ground up — the project I've put the most into.</p>
+        <ul class="cv-entry__bullets">
+          <li>A <strong>hand-written vanilla-JS engine</strong>: turn loop, move resolution and the status / hazard system all written by hand, no game framework, so I know exactly how every edge case resolves.</li>
+          <li>An authoritative <strong>Supabase / PostgreSQL backend with migrations</strong> handles the hard part — two players acting on one shared, authoritative state, plus saved progress — where most of the engineering effort lives.</li>
+          <li>A full story mode (catch, PC, Underground and Safari systems, boss arcs); HP and status restore between battles, but consumables only matter <em>inside</em> an encounter, so every fight is its own resource puzzle and rewards stay fair between strangers in PvP.</li>
+          <li>Hardened like production software: performance profiling of the turn loop and memory, a central issue ledger with <strong>spec-drift checks</strong> against the design docs, and a PWA manifest.</li>
+          <li>The part I'm proudest of — a test suite built on <strong>deterministic replay</strong>: the same seed reproduces a run exactly, so a bug someone hits once becomes a test I can replay forever.</li>
+        </ul>
+        <ul class="tags tags--sm"><li>Vanilla JS engine</li><li>Supabase / PostgreSQL</li><li>deterministic replay</li><li>performance profiling</li><li>PWA</li></ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry__head">
+          <span class="cv-entry__role"><a href="projects/rocketio.html">RocketIO</a> — real-time hex-grid strategy</span>
+          <span class="cv-entry__meta">Vanilla JS · Canvas · WebAudio</span>
+        </div>
+        <p class="cv-entry__org">14 factions (70 units), a missile economy and adaptive AI on a procedurally generated map — tiles, units and sound all generated in code, no engine and no art assets.</p>
+        <ul class="cv-entry__bullets">
+          <li>Real-time strategy on an <strong>HTML5 Canvas</strong> with almost nothing as a fixed asset: no image files, no pre-built maps, no recorded music — the game assembles its world in code at runtime.</li>
+          <li><strong>Procedural maps</strong> from gradient noise, tuned into recognisably different worlds (continents, archipelagos, inland seas), so strategy changes with the geography instead of a fixed board.</li>
+          <li>A <strong>missile economy</strong> (factories build, launchers fire, anti-air intercepts) read through fog of war, with up to six <strong>doctrine-driven AI</strong> opponents that re-weigh their plans as the state shifts and can't memorise an opening.</li>
+          <li>Tuned from data, not feel: a separate <strong>balance-simulator</strong> plays factions against each other headless; Vite bundles, Vitest + GitHub Actions run on every push, and the score is generated adaptively through WebAudio.</li>
+        </ul>
+        <ul class="tags tags--sm"><li>Vanilla JS (ES modules)</li><li>HTML5 Canvas</li><li>Procedural generation</li><li>Game AI</li><li>WebAudio</li><li>Vite · Vitest · CI</li></ul>
       </div>
 
       <div class="cv-entry">
@@ -296,6 +323,9 @@
           <span class="cv-entry__meta">React · TypeScript</span>
         </div>
         <p class="cv-entry__org">A Turkish family-tree puzzle where kinship terms are derived from the family graph, not stored — every placement is genuine deduction. Solver-checked, installable PWA.</p>
+        <ul class="cv-entry__bullets">
+          <li>Kinship terms are computed from the family graph at runtime rather than stored, so the puzzle can't be memorised; a solver verifies every generated board is uniquely deducible.</li>
+        </ul>
         <ul class="tags tags--sm"><li>React 18</li><li>TypeScript (strict)</li><li>PWA</li><li>Vitest</li></ul>
       </div>
 
@@ -305,16 +335,10 @@
           <span class="cv-entry__meta">TypeScript · Playwright</span>
         </div>
         <p class="cv-entry__org">Pass-and-play and three AI difficulties, with the game's rules kept separate from the screen so the whole thing is exhaustively testable. ~20 KB, zero runtime deps.</p>
+        <ul class="cv-entry__bullets">
+          <li>The rules live in a pure module apart from the UI, so the game — including a card-counting hard bot — is fully unit- and end-to-end-tested under Vite and Playwright.</li>
+        </ul>
         <ul class="tags tags--sm"><li>TypeScript (strict)</li><li>Vite</li><li>Playwright</li></ul>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry__head">
-          <span class="cv-entry__role"><a href="projects/rocketio.html">RocketIO</a> — real-time hex-grid strategy</span>
-          <span class="cv-entry__meta">Vanilla JS · Canvas · WebAudio</span>
-        </div>
-        <p class="cv-entry__org">14 factions, a missile economy and adaptive AI on a procedurally generated map — tiles, units and sound all generated in code, no engine and no art assets.</p>
-        <ul class="tags tags--sm"><li>Vanilla JS (ES modules)</li><li>HTML5 Canvas</li><li>Procedural generation</li><li>CI</li></ul>
       </div>
     </section>
 

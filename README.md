@@ -7,7 +7,8 @@ frameworks, no dependencies.
 ```
 index.html          Landing page (hero, nav cards, about, projects, coaching, contact)
 about.html          The longer personal story
-master-cv.html      The Master CV (live web CV and source for the PDF)
+MASTER-CV.md        Single source of truth + application generator (private; never sent)
+master-cv.html      Public detailed-background CV (live web CV and source for the PDF)
 one-pager-cv.html   Template for a job-tailored one-page CV
 styles.css          Design system (theme variables in :root)
 cv-print.css        Print/PDF styling for the CV pages
@@ -29,10 +30,13 @@ python -m http.server 5500
 
 ## CV system
 
-`master-cv.html` is the single source of truth and doubles as the live web CV. Regenerate
-`assets/CV_Meric_Erler.pdf` by opening it and choosing **Print → Save as PDF**. For each
-application, duplicate `one-pager-cv.html` and fill in the `<!-- TAILOR -->` blocks. The full
-workflow is in `CV-SYSTEM.md`.
+`MASTER-CV.md` is the single source of truth and the generator for every application; the
+public `master-cv.html` (a profile/skills-free detailed CV) and each tailored one-pager are
+derived from it, so nothing you send can contradict anything else. Regenerate
+`assets/CV_Meric_Erler.pdf` by opening `master-cv.html` and choosing **Print → Save as PDF**.
+For each application, paste the job ad into `MASTER-CV.md` §13, then duplicate
+`one-pager-cv.html` and fill in the `<!-- TAILOR -->` blocks. The full workflow is in
+`CV-SYSTEM.md`.
 
 ## Deploy
 
