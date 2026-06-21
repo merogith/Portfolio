@@ -144,7 +144,7 @@ and I'll back my own judgement when it counts.
   Studio**, and read Meta Ads results to steer acquisition spend — the core retention /
   engagement / CAC loop.
 - Wrote the quantitative business plan, growth projections and pitch deck behind the company's
-  **seed crowdfunding raise**.
+  **₺1.37M seed crowdfunding raise** (2022).
 - Identified demand for IB, SAT, TOEFL and IELTS programmes, contributing to a **~30% increase**
   in high-school student–tutor matches through new course offerings.
 - Supported daily operations — tutor onboarding, user requests and internal documentation.
@@ -306,7 +306,7 @@ internal data*
 
 ### On my own to-build list
 - A **Classic-WoW-style RPG reimagined as an idle game** — idle is the genre I actually spend my
-  time in (Clicker Heroes, Tap Titans, Slayer Legend, Idle Slayer, Legends of Idleon), and the
+  time in (Idle Maple Story, Slayer Legend, Legends of Idleon, Idle Slayer, Clicker Heroes), and the
   one I most want to build in.
 
 ---
@@ -433,32 +433,34 @@ phrasing. Map the ad's named requirements to real evidence, but never as a visib
 
 > Dear Kolibri Games Team,
 >
-> I've been play-testing Idle Bank Tycoon for a while, and somewhere along the way I stopped
-> playing and started taking notes. It reads to me like AdVenture Capitalist rebuilt for a modern
-> phone — the same idle backbone, but with a tighter economy, smarter monetization and far more
-> polish. Taking a live economy apart like that is genuinely what I do for fun, so when the **Game
-> Economy Designer** seat opened on the team, I had to write.
+> Lately, I have been playing Idle Bank Tycoon, and at some point I stopped playing and started
+> taking notes. It reads like AdVenture Capitalist rebuilt for a modern phone audience: the same
+> idle backbone, but with a tighter economy, smarter monetization, and far more visual polish.
+> Pulling a live idle economy apart like that is genuinely how I spend my spare time, so when I saw
+> the **Game Economy Designer** opening on the team, I had to write.
 >
-> Here's why I think it's the rare role that actually fits me. I've built and balanced two games
-> of my own from scratch, and both are economy games at heart: a **Pokémon-style RPG with online
-> PvP**, where every stat, move and reward has to stay fair between real players, and **RocketIO**,
-> a real-time multiplayer game where a missile economy and constant resource trade-offs *are* the
-> game. Building them taught me the same thing over and over — resource management and economy
-> design aren't two skills, they're one, and the balance between them is what keeps people playing.
+> And I not only play these systems, but I build them. I have designed and balanced two games of my
+> own from scratch: a **Pokémon-style turn-based RPG with online PvP**, where I successfully
+> maintained balance so that every stat, move, and reward remained fair across all levels of the
+> game, and **RocketIO**, a real-time multiplayer game built on a missile economy and constant
+> resource trade-offs, where careful tuning is what keeps the matches competitive. Both experiences
+> reinforced the lesson I see in Idle Bank Tycoon: resource management and economic design are two
+> sides of the same coin, and the balance is what keeps people playing. To test this directly in
+> your context, I also conducted a self-directed economic study of Idle Bank Tycoon, developing a
+> model that included two live-ops levers, retention guardrails, and an A/B plan, resulting in a
+> modelled projection of a blended **+15.5% ARPDAU**. The results of this analysis are linked below.
 >
-> The other half is analytical. Before games I spent three years as a data analyst across equity
-> research, pharma and edtech, with a finance and economics core before that — so to Kolibri I'd
-> bring the economic read, the data-driven approach and the analyst's toolkit, already proven on
-> real game systems rather than in theory. To put that against your game directly, I ran an economy
-> study on Idle Bank Tycoon: a **400-formula** model in Excel and Sheets with two live-ops levers,
-> retention guardrails and an A/B plan, modelling a blended **+15.5% ARPDAU**. It's linked below.
+> Before games, I spent 3 years as a data analyst across pharma, edtech, and equity research,
+> turning messy data into actionable insights. That is the other half of what I would bring to
+> Kolibri: a data-driven read on an economy to sit beside the designer's feel for it. This role is
+> the first place I have found where the systems I love building and the analysis I am good at point
+> at the same goal.
 >
-> And idle is genuinely my genre. I've gone deep on Clicker Heroes, Tap Titans, Slayer Legend,
-> Idle Slayer and Legends of Idleon, and the project on my own to-build list is a **Classic-WoW-
-> style MMORPG reimagined as an idle game**. For me this role is where a stack of skills from
-> different disciplines finally points in one direction, right next to the work I care about most.
-> I learn fast, and I've already got built-and-balanced games and shipped data projects to show
-> for it. I'd love to talk it through — thank you for reading.
+> And idle is simply the genre I live in. I have gone deep on Idle Maple Story, Slayer Legend,
+> Legends of Idleon, Idle Slayer, and Clicker Heroes, and I keep my own more-indie idle project on
+> my to-build list, a **Classic-WoW-style RPG reimagined as an idle game**. I learn fast, I already
+> have built and balanced games to show for it, and this is honestly the role I have been working
+> toward. I would love to talk it through. Thank you for reading.
 >
 > Best regards,
 > Meriç Erler
