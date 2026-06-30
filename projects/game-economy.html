@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Free-to-Play Game Economy &amp; Balance — Meriç Erler</title>
-  <meta name="description" content="Is the game economy balanced, which items are overpowered, and who pays? Economy accounting, z-tests, retention cohorts, and a logistic payer model (AUC 0.80)." />
+  <meta name="description" content="Is the game economy balanced, which items are overpowered, and who pays? Economy accounting, z-tests, retention cohorts, and a logistic payer model (AUC ≈0.79)." />
   <link rel="canonical" href="https://merogith.github.io/Portfolio/projects/game-economy.html" />
 
   <meta property="og:title" content="Free-to-Play Game Economy &amp; Balance — Meriç Erler" />
-  <meta property="og:description" content="Is the game economy balanced, which items are overpowered, and who pays? Economy accounting, z-tests, retention cohorts, and a logistic payer model (AUC 0.80)." />
+  <meta property="og:description" content="Is the game economy balanced, which items are overpowered, and who pays? Economy accounting, z-tests, retention cohorts, and a logistic payer model (AUC ≈0.79)." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://merogith.github.io/Portfolio/projects/game-economy.html" />
   <meta property="og:image" content="https://merogith.github.io/Portfolio/assets/charts/game-economy/01_player_mix.png" />
@@ -63,7 +63,7 @@
         <span class="card__tag card__tag--data">Data · Project 2 · synthetic data</span>
         <h1 class="case__title">Free-to-Play Game Economy &amp; Balance</h1>
         <p class="case__tagline">Is the economy balanced, which items are broken, and who actually pays for it?</p>
-        <p class="case__bottomline"><b>The short answer:</b> the economy is broadly balanced with a handful of overpowered items to rein in, and monetisation is small (only 5.8% ever pay) but predictable — a model flags likely payers from their first three days alone with AUC 0.80, so live-ops effort can be aimed where it converts.</p>
+        <p class="case__bottomline"><b>The short answer:</b> the economy is broadly balanced with a handful of genuinely overpowered items to rein in, and monetisation is small (only 5.8% ever pay) but separable — a model flags likely payers from their first three days alone with AUC ≈0.79. On this synthetic data, early engagement and paying share a designed-in propensity, so that score is best read as a working pipeline rather than a real-world prediction.</p>
         <div class="case__meta">
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/blob/main/project-2-game-economy/analysis.ipynb" target="_blank" rel="noopener">View the notebook</a>
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/tree/main/project-2-game-economy" target="_blank" rel="noopener">GitHub folder</a>
@@ -75,7 +75,7 @@
         <span class="stat"><b>61%</b>Phoenix Blade win rate</span>
         <span class="stat"><b>47→18→4%</b>retention D1/D7/D30</span>
         <span class="stat"><b>5.8%</b>payer rate</span>
-        <span class="stat"><b>AUC 0.80</b>payer model</span>
+        <span class="stat"><b>AUC ≈0.79</b>payer model (designed-in)</span>
       </div>
 
       <div class="case__callout reveal" style="margin-top:18px;">
@@ -96,7 +96,7 @@
           <li><b>5.8%</b><span>Payer rate</span></li>
           <li><b>18%</b><span>D7 retention</span></li>
           <li><b>~63%</b><span>Sink recovery</span></li>
-          <li><b>AUC 0.80</b><span>Payer model</span></li>
+          <li><b>AUC ≈0.79</b><span>Payer model</span></li>
         </ul>
         <div class="dash__actions">
           <a class="btn btn--primary dash__cta" href="https://public.tableau.com/views/GameEconomyDashboard/GameEconomyDashboard?:language=en-US&amp;:display_count=n&amp;:origin=viz_share_link" target="_blank" rel="noopener">View the live dashboard ↗</a>
@@ -118,7 +118,7 @@
         <h2>Approach &amp; method</h2>
         <ul>
           <li><strong>Economy accounting:</strong> compared coins minted (faucets) against coins removed (sinks) to measure inflation, with a SQL <code>SUM() OVER (PARTITION BY …)</code> running wallet balance.</li>
-          <li><strong>Item balance:</strong> proportion z-tests with 95% confidence intervals vs the fair 50% line to find statistically over/under-powered items.</li>
+          <li><strong>Item balance:</strong> proportion z-tests with 95% confidence intervals vs the fair 50% line, requiring both significance <em>and</em> a ≥5-point effect to flag an item — so trivially-off items that only "test significant" on huge samples read as "skewed, small," not overpowered.</li>
           <li><strong>Retention:</strong> built D1 / D7 / D30 cohort curves.</li>
           <li><strong>Monetisation:</strong> a funnel plus a logistic-regression payer model on first-3-day behaviour, scored by AUC and accuracy.</li>
         </ul>
@@ -132,7 +132,7 @@
           <figcaption class="case__figcap">Faucets out-pace sinks and the surplus only grows, the signature of mild inflation.</figcaption>
         </figure>
 
-        <p>Two premium items are <strong>statistically overpowered</strong>: Phoenix Blade wins 61.3% and Aegis Shield 59.4%, with confidence intervals entirely above 50%. Because both are paid, the game reads as mildly <strong>pay-to-win</strong>. Rusty Dagger is the opposite, an underpowered starter trap at 41.8%.</p>
+        <p>Two premium items are <strong>overpowered by a meaningful margin</strong> — significant <em>and</em> well over 5 points off fair: Phoenix Blade wins 61.3% and Aegis Shield 59.4%, with confidence intervals entirely above 50%. Because both are paid, the game reads as mildly <strong>pay-to-win</strong>. Rusty Dagger is the opposite, an underpowered starter trap at 41.8%. (Items sitting only a point or two off 50% are treated as "skewed, small," not flagged as broken.)</p>
         <figure class="case__figure">
           <img width="972" height="587" src="../assets/charts/game-economy/04_item_balance.png" alt="Item win rates with 95% confidence intervals against a fair 50% line" loading="lazy" />
           <figcaption class="case__figcap">Bars are 95% confidence intervals; the dashed line is the fair 50%. Two premium items sit clearly above it.</figcaption>
@@ -144,7 +144,7 @@
           <figcaption class="case__figcap">About half of installs never return on day 1, the steepest part of the whole funnel.</figcaption>
         </figure>
 
-        <p>Monetisation is small but <strong>predictable</strong>: only 5.8% of players ever pay (ARPPU $15.61), but a logistic model predicts payers from first-3-day behaviour alone with <strong>AUC 0.80</strong> — it ranks a random payer above a random non-payer about 80% of the time — and ~74% accuracy.</p>
+        <p>Monetisation is small but <strong>separable</strong>: only 5.8% of players ever pay (ARPPU $15.61), and a logistic model separates payers from first-3-day behaviour alone with <strong>AUC ≈0.79</strong> — it ranks a random payer above a random non-payer about 79% of the time — at ~74% accuracy. One honest caveat: on this synthetic data, early engagement is itself a term in how payers are generated, so the AUC partly reflects that designed-in coupling. It demonstrates the pipeline works; it isn't a generalisable real-world prediction.</p>
         <figure class="case__figure">
           <img width="1302" height="466" src="../assets/charts/game-economy/08_payer_model.png" alt="ROC curve and feature importance for the logistic payer-prediction model" loading="lazy" />
           <figcaption class="case__figcap">Payers are sharply distinguished by early engagement, enough to target a fair early offer.</figcaption>
