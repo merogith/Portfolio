@@ -63,7 +63,7 @@
         <span class="card__tag card__tag--data">Data · Project 1 · synthetic data</span>
         <h1 class="case__title">Pharmaceutical CRM Sales Analytics</h1>
         <p class="case__tagline">Do sales calls drive prescriptions, and where should a rep spend their limited time?</p>
-        <p class="case__bottomline"><b>The short answer:</b> calls do move prescriptions — about +5.5 scripts each — so rep effort isn't wasted. But rep time is the scarce resource, so the win is concentrating it on the 99 high-potential doctors where each visit pays off, and easing off the long tail where it doesn't.</p>
+        <p class="case__bottomline"><b>The short answer:</b> more calls go with more prescriptions — about +5.5 scripts each, and the link holds (~+5.6) even after controlling for a doctor's potential — so rep effort looks well spent. (It's an association on observational, synthetic data, not proven causation.) Rep time is the scarce resource, so the win is concentrating it on the 99 high-potential doctors where each visit should pay off, and easing off the long tail where it doesn't.</p>
         <div class="case__meta">
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/blob/main/project-1-pharma-crm/analysis.ipynb" target="_blank" rel="noopener">View the notebook</a>
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/tree/main/project-1-pharma-crm" target="_blank" rel="noopener">GitHub folder</a>
@@ -122,26 +122,26 @@
         <ul>
           <li>Cleaned and joined the call and prescription records, documenting every decision in a table.</li>
           <li>Tested the call → prescription relationship with <strong>correlation and OLS regression</strong>.</li>
-          <li>Segmented the 600 doctors into four behavioral groups with <strong>KMeans</strong>.</li>
+          <li>Segmented the 600 doctors into four value tiers with <strong>KMeans</strong> (k chosen by silhouette score).</li>
           <li>Built a ranked priority list using SQL <code>RANK() OVER (PARTITION BY region …)</code> window functions.</li>
         </ul>
       </section>
 
       <section class="case__section reveal">
         <h2>What I found</h2>
-        <p>Calls and prescriptions are meaningfully related: <strong>r = 0.49 (R² = 0.24)</strong> — a moderate positive link, with call volume accounting for roughly a quarter of the variation in scripts. Each additional call per year is worth about <strong>5.5 more scripts</strong>, so the effort isn't wasted.</p>
+        <p>Calls and prescriptions are meaningfully related: <strong>r = 0.49 (R² = 0.24)</strong> — a moderate positive link, with call volume accounting for roughly a quarter of the variation in scripts. Each additional call per year goes with about <strong>5.5 more scripts</strong> (~5.6 once a doctor's underlying potential is controlled for), so rep effort looks well spent — though on observational, synthetic data this is an association, not proof of causation.</p>
         <figure class="case__figure">
           <img width="972" height="587" src="../assets/charts/pharma-crm/05_calls_vs_scripts.png" alt="Scatter of calls per doctor against scripts written, with an upward trend line" loading="lazy" />
           <figcaption class="case__figcap">Each dot is a doctor; the upward line means visiting a doctor more often goes with more scripts.</figcaption>
         </figure>
 
-        <p>Prescribing is concentrated: the <strong>top 20% of doctors write roughly a third of all scripts</strong>. That's why <em>which</em> doctors a rep visits matters as much as how many visits they make.</p>
+        <p>Prescribing is concentrated: the <strong>top 20% of doctors write about 37% of all scripts</strong>. That's why <em>which</em> doctors a rep visits matters as much as how many visits they make.</p>
         <figure class="case__figure">
           <img width="1302" height="444" src="../assets/charts/pharma-crm/02_script_concentration.png" alt="Concentration curve showing a small share of doctors driving most prescriptions" loading="lazy" />
           <figcaption class="case__figcap">A small group of doctors drives a large share of scripts, so targeting beats sheer call volume.</figcaption>
         </figure>
 
-        <p>A KMeans segmentation splits the doctors into four groups and isolates a <strong>99-doctor "High-potential growth" segment</strong>: doctors with headroom who respond to calls but aren't prescribing at capacity. That's the best place to invest extra effort.</p>
+        <p>A KMeans segmentation (with <em>k</em> chosen by silhouette score) splits the doctors into four current-value tiers and isolates a <strong>99-doctor "High-potential growth" tier</strong>: doctors with headroom above their current volume who still respond to calls. That's the best place to invest extra effort.</p>
         <figure class="case__figure">
           <img width="971" height="642" src="../assets/charts/pharma-crm/06_hcp_segments.png" alt="Doctor segments from KMeans clustering plotted by value and responsiveness" loading="lazy" />
           <figcaption class="case__figcap">Four segments: Champions (133), Steady mid-tier (51), High-potential growth (99), Low priority (317). The growth group is the target.</figcaption>
