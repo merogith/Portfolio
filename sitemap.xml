@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://merogith.github.io/Portfolio/</loc><priority>1.0</priority></url>
-  <url><loc>https://merogith.github.io/Portfolio/about.html</loc><priority>0.8</priority></url>
   <!-- CV pages parked for now — un-comment to restore:
   <url><loc>https://merogith.github.io/Portfolio/master-cv.html</loc><priority>0.8</priority></url>
   <url><loc>https://merogith.github.io/Portfolio/one-pager-cv.html</loc><priority>0.5</priority></url>
