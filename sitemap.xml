@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://merogith.github.io/Portfolio/</loc><priority>1.0</priority></url>
-  <!-- CV pages parked for now — un-comment to restore:
-  <url><loc>https://merogith.github.io/Portfolio/master-cv.html</loc><priority>0.8</priority></url>
-  <url><loc>https://merogith.github.io/Portfolio/one-pager-cv.html</loc><priority>0.5</priority></url>
-  -->
-  <url><loc>https://merogith.github.io/Portfolio/projects/stock-market.html</loc><priority>0.7</priority></url>
-  <url><loc>https://merogith.github.io/Portfolio/projects/pharma-crm.html</loc><priority>0.7</priority></url>
-  <url><loc>https://merogith.github.io/Portfolio/projects/game-economy.html</loc><priority>0.7</priority></url>
-  <url><loc>https://merogith.github.io/Portfolio/projects/battle.html</loc><priority>0.6</priority></url>
-  <url><loc>https://merogith.github.io/Portfolio/projects/bayram-ziyareti.html</loc><priority>0.6</priority></url>
-  <url><loc>https://merogith.github.io/Portfolio/projects/toptrumps.html</loc><priority>0.6</priority></url>
-  <url><loc>https://merogith.github.io/Portfolio/projects/rocketio.html</loc><priority>0.6</priority></url>
+  <url><loc>https://merogith.github.io/Portfolio/</loc></url>
+  <url><loc>https://merogith.github.io/Portfolio/aboutme.html</loc></url>
+  <url><loc>https://merogith.github.io/Portfolio/policy-evidence.html</loc></url>
+  <url><loc>https://merogith.github.io/Portfolio/research.html</loc></url>
+  <url><loc>https://merogith.github.io/Portfolio/work-examples.html</loc></url>
 </urlset>

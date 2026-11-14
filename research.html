@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research, engineering and automation work by Meriç Erler, with summaries and examples.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Research &amp; engineering · Meriç Erler</title>
+  <style>
+    :root { color-scheme: light; --ink: #111; --muted: #555; --rule: #d6d6d6; --paper: #f6f6f6; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-padding-top: 20px; }
+    body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: inherit; text-underline-offset: .22em; }
+    a:focus-visible, summary:focus-visible { outline: 2px solid; outline-offset: 4px; }
+    .skip { position: absolute; top: -10rem; left: 1rem; background: #fff; padding: .4rem .7rem; }
+    .skip:focus { top: 1rem; }
+    .page { width: min(100% - 48px, 1100px); margin-inline: auto; }
+    .masthead { padding: 2.1rem 0 2.45rem; border-bottom: 1px solid var(--ink); }
+    .name { font-size: .95rem; font-weight: 650; }
+    h1, h2, p, figure { margin: 0; }
+    h1 { margin: 1.65rem 0 1.05rem; font-size: clamp(2.45rem, 7.2vw, 5.25rem); line-height: .98; letter-spacing: -.065em; font-weight: 650; }
+    .masthead nav { display: flex; flex-wrap: wrap; gap: .45rem 1.3rem; margin-top: 1.4rem; font-size: .88rem; }
+    .case { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: clamp(1.5rem, 4vw, 3.5rem); padding-block: clamp(1.75rem, 5vw, 3.6rem); border-bottom: 1px solid var(--rule); }
+    .case h2 { font-size: clamp(1.7rem, 3.25vw, 2.65rem); font-weight: 650; line-height: 1.08; letter-spacing: -.042em; margin: .4rem 0 .9rem; }
+    .case .copy > p + p { margin-top: .75rem; }
+    .meta, .note, figcaption, .measure { color: var(--muted); font-size: .82rem; }
+    .meta { font-weight: 620; }
+    figcaption { margin-top: .55rem; }
+    .figure-title { font-weight: 650; line-height: 1.3; }
+    .panel { margin: 0; padding: clamp(1rem, 3vw, 1.5rem); background: var(--paper); border: 1px solid var(--rule); }
+    .barlist { list-style: none; padding: 0; margin: 1.05rem 0 0; display: grid; row-gap: .55rem; }
+    .barlist li { display: grid; grid-template-columns: minmax(10rem, 1.05fr) minmax(2.2rem, 1fr) 3rem; align-items: center; gap: .48rem; font-size: .81rem; }
+    .track { height: .52rem; background: #dedede; }
+    .bar { display: block; height: 100%; width: var(--share); background: var(--ink); }
+    .barlist strong { font-variant-numeric: tabular-nums; text-align: right; }
+    .steps { margin: .8rem 0 0; padding-left: 1.55rem; }
+    .steps li { padding: .55rem 0 .5rem .25rem; border-bottom: 1px solid var(--rule); }
+    .steps li:last-child { border: 0; padding-bottom: 0; }
+    .steps li::marker { font-weight: 650; }
+    .responses { display: grid; gap: .8rem; margin: .85rem 0 0; }
+    .responses div { padding-top: .7rem; border-top: 1px solid var(--rule); }
+    .responses dt { font-weight: 650; }
+    .responses dd { margin: .22rem 0 0; color: var(--muted); font-size: .88rem; }
+    .chart { width: 100%; height: auto; display: block; margin-top: .65rem; }
+    .chart text { fill: #333; font-size: 16px; }
+    .legend { display: flex; flex-wrap: wrap; gap: .25rem .95rem; margin-top: .6rem; font-size: .82rem; }
+    .legend span::before { content: ""; display: inline-block; width: 1.4rem; margin-right: .35rem; border-top: 2px solid var(--ink); transform: translateY(-.18rem); }
+    .legend .fit::before { border-top-style: dashed; }
+    details { margin-top: .85rem; font-size: .86rem; }
+    summary { width: fit-content; cursor: pointer; font-weight: 600; text-decoration: underline; text-underline-offset: .22em; }
+    table { margin-top: .7rem; width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+    th, td { text-align: left; padding: .3rem .35rem; border-bottom: 1px solid var(--rule); }
+    .code { overflow: auto; font-size: .77rem; background: #fff; border: 1px solid var(--rule); padding: .7rem; }
+    .source-note { margin-top: .7rem; }
+    .footer { display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem 0 2rem; font-size: .84rem; }
+    @media (max-width: 740px) { .case { grid-template-columns: 1fr; } }
+    @media (max-width: 390px) { .page { width: calc(100% - 28px); } .barlist li { grid-template-columns: minmax(8rem, 1.2fr) minmax(1.3rem, .7fr) 2.6rem; gap: .3rem; } }
+    @media print { .masthead { padding-top: .35rem; } .page { width: 100%; } .case { display: block; break-inside: avoid; } figure, .panel { margin-top: .6rem; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="page" id="top">
+    <header class="masthead">
+      <p class="name">Meriç Erler</p>
+      <h1>Research &amp; engineering</h1>
+      <nav aria-label="Jump to a project">
+        <a href="./">← Portfolio</a>
+        <a href="#thesis">Pharmaceutical marketing</a>
+        <a href="#saksi">Saksı Kampüs</a>
+        <a href="#konya">Konya watershed</a>
+        <a href="#matlab">MATLAB modeling</a>
+        <a href="#sludgendary">Sludgendary</a>
+        <a href="#edge">Event planning</a>
+        <a href="#regional-risk">Risk index comparison</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <article class="case" id="thesis" aria-labelledby="thesis-title">
+        <div class="copy">
+          <p class="meta">Master’s thesis · University of Europe for Applied Sciences · 2024</p>
+          <h2 id="thesis-title">Revolutionizing Pharmaceutical Marketing with Generative AI</h2>
+          <p>I surveyed 55 pharmaceutical professionals using the Technology Acceptance Model and compared perceived usefulness and ease of use across marketing tasks.</p>
+          <p>Perceived usefulness was positively associated with intention to use generative AI. The cross-sectional survey measured perceptions and intended use at one point in time.</p>
+        </div>
+        <figure>
+          <div class="panel">
+            <p class="figure-title">Which tasks received the highest usefulness rating?</p>
+            <p class="measure">Share of respondents selecting 5 out of 5, by task</p>
+            <ul class="barlist">
+              <li><span>Routine tasks</span><span class="track" aria-hidden="true"><span class="bar" style="--share:63.6%"></span></span><strong>63.6%</strong></li>
+              <li><span>Educational content</span><span class="track" aria-hidden="true"><span class="bar" style="--share:59.3%"></span></span><strong>59.3%</strong></li>
+              <li><span>Content creation</span><span class="track" aria-hidden="true"><span class="bar" style="--share:58.2%"></span></span><strong>58.2%</strong></li>
+              <li><span>Market research and data analysis</span><span class="track" aria-hidden="true"><span class="bar" style="--share:52.7%"></span></span><strong>52.7%</strong></li>
+              <li><span>Compliance</span><span class="track" aria-hidden="true"><span class="bar" style="--share:50%"></span></span><strong>50.0%</strong></li>
+              <li><span>Product launches</span><span class="track" aria-hidden="true"><span class="bar" style="--share:43.6%"></span></span><strong>43.6%</strong></li>
+            </ul>
+          </div>
+          <figcaption>Selected tasks from thesis Table 29, p. 96. Percentages use answers to each item. The chart shows perceived usefulness.</figcaption>
+        </figure>
+      </article>
+
+      <article class="case" id="saksi" aria-labelledby="saksi-title">
+        <div class="copy">
+          <p class="meta">Corporate Management capstone · University of Europe for Applied Sciences · 2023</p>
+          <h2 id="saksi-title">Saksı Kampüs · German market expansion</h2>
+          <p>I prepared a market-entry proposal for a Turkish education technology startup. I assessed German university students as an initial audience, mapped competitors and outlined operating and funding assumptions.</p>
+          <p>The proposal used the product roadmap to frame what could be tested first and what would require further development.</p>
+        </div>
+        <figure>
+          <div class="panel">
+            <p class="figure-title">Product roadmap assessed in the capstone</p>
+            <ol class="steps">
+              <li><strong>Tutor questions.</strong> Begin with a mobile module connecting students with tutors.</li>
+              <li><strong>Broader online learning.</strong> Add lectures, videos and mentoring.</li>
+              <li><strong>Enhanced learning modules.</strong> Explore AI- and VR-assisted learning.</li>
+            </ol>
+          </div>
+          <figcaption>Adapted from capstone §1.4, pp. 6–7. The roadmap describes planned capabilities and the case presents a proposed expansion.</figcaption>
+        </figure>
+      </article>
+
+      <article class="case" id="konya" aria-labelledby="konya-title">
+        <div class="copy">
+          <p class="meta">ENVE 414 team project · Middle East Technical University · 2020–21</p>
+          <h2 id="konya-title">Climate adaptation for the Konya watershed</h2>
+          <p>Our team reviewed how changes in precipitation, temperature and runoff could affect water availability in Türkiye’s enclosed Konya watershed. The study looked at agricultural demand alongside wetland and habitat needs.</p>
+          <p class="note">Team members Mert Arslan, Batuhan Yüksel and Meriç Erler.</p>
+        </div>
+        <figure>
+          <div class="panel">
+            <p class="figure-title">Proposed responses to water scarcity</p>
+            <dl class="responses">
+              <div><dt>Agriculture</dt><dd>Assess surge irrigation, cablegation and low-elevation application systems as ways to improve irrigation practices.</dd></div>
+              <div><dt>Ecosystems</dt><dd>Consider wetland protection and restoration, land use and habitat connectivity in watershed planning.</dd></div>
+            </dl>
+          </div>
+          <figcaption>Adapted from the final team presentation, slides 14–19. These options were assessed as part of the coursework.</figcaption>
+        </figure>
+      </article>
+
+      <article class="case" id="matlab" aria-labelledby="matlab-title">
+        <div class="copy">
+          <p class="meta">ENVE 404 individual term project · Middle East Technical University · 2020</p>
+          <h2 id="matlab-title">Calibrating a contaminant transport model</h2>
+          <p>I simulated concentration over time and distance in MATLAB. At 60 m, I fitted the dispersion parameter to four observations by minimizing root mean square error and checked the fit against the three remaining observations.</p>
+          <p>RMSE was 0.37 g/m³ on the calibration points and 0.16 g/m³ on the held-out points. The check used one distance and three held-out values.</p>
+        </div>
+        <figure>
+          <div class="panel">
+            <p class="figure-title">Concentration at 60 m</p>
+            <svg class="chart" viewBox="0 0 454 238" role="img" aria-labelledby="concentration-title concentration-desc">
+              <title id="concentration-title">Assignment observations and calibrated concentration over time</title>
+              <desc id="concentration-desc">Line chart at 60 meters with concentration in grams per cubic meter. Years 1–4 were used to fit the model, and years 5–7 were held out. Values are available in the table below.</desc>
+              <rect x="269" y="46" width="165" height="150" fill="#e7e7e7"/>
+              <path d="M38 46H434 M38 96H434 M38 146H434 M38 196H434" stroke="#bdbdbd" fill="none"/>
+              <g text-anchor="middle">
+                <text x="153" y="28">Calibration</text><text x="352" y="28">Holdout</text>
+                <text x="38" y="215">1</text><text x="104" y="215">2</text><text x="170" y="215">3</text>
+                <text x="236" y="215">4</text><text x="302" y="215">5</text><text x="368" y="215">6</text><text x="434" y="215">7</text>
+                <text x="236" y="235">Year</text>
+              </g>
+              <g text-anchor="end">
+                <text x="27" y="51">6</text><text x="27" y="101">4</text><text x="27" y="151">2</text><text x="27" y="201">0</text>
+              </g>
+              <g fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round">
+                <polyline points="38,144.75 104,67.25 170,91.00 236,97.25 302,121.00 368,128.50 434,143.50"/>
+                <polyline stroke-dasharray="6 5" points="38,138.09 104,80.94 170,80.83 236,96.63 302,114.49 368,130.54 434,143.94"/>
+              </g>
+              <g fill="#111">
+                <circle cx="38" cy="144.75" r="3.2"/>
+                <circle cx="104" cy="67.25" r="3.2"/>
+                <circle cx="170" cy="91.00" r="3.2"/>
+                <circle cx="236" cy="97.25" r="3.2"/>
+                <circle cx="302" cy="121.00" r="3.2"/>
+                <circle cx="368" cy="128.50" r="3.2"/>
+                <circle cx="434" cy="143.50" r="3.2"/>
+              </g>
+            </svg>
+            <div class="legend"><span>Assignment observations</span><span class="fit">Calibrated model</span></div>
+            <details>
+              <summary>Values and calculation</summary>
+              <table aria-label="Observed and modeled concentrations in grams per cubic meter">
+                <thead><tr><th scope="col">Year</th><th scope="col">Split</th><th scope="col">Observed</th><th scope="col">Modeled</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">1</th><td>Calibration</td><td>2.05</td><td>2.32</td></tr>
+                  <tr><th scope="row">2</th><td>Calibration</td><td>5.15</td><td>4.60</td></tr>
+                  <tr><th scope="row">3</th><td>Calibration</td><td>4.20</td><td>4.61</td></tr>
+                  <tr><th scope="row">4</th><td>Calibration</td><td>3.95</td><td>3.97</td></tr>
+                  <tr><th scope="row">5</th><td>Holdout</td><td>3.00</td><td>3.26</td></tr>
+                  <tr><th scope="row">6</th><td>Holdout</td><td>2.70</td><td>2.62</td></tr>
+                  <tr><th scope="row">7</th><td>Holdout</td><td>2.10</td><td>2.08</td></tr>
+                </tbody>
+              </table>
+              <p class="note source-note">The excerpt reproduces the assignment’s numeric convention. The source labels time in years and the dispersion grid in m²/day but applies the raw grid values in the equation. A physical application requires checking and reconciling these units.</p>
+              <pre class="code"><code>years = 1:7;
+observed = [2.05 5.15 4.20 3.95 3.00 2.70 2.10];
+
+porosity = 0.30;
+decay = 0.20;
+velocity = 12;
+retardation = 3;
+sourceMass = 500;
+distance = 60;
+dispersion = (365:60:1825)';
+
+spread = dispersion .* years ./ retardation;
+offset = distance - velocity .* years ./ retardation;
+candidates = sourceMass .* exp(-decay .* years) ./ ...
+    (2 .* porosity .* sqrt(pi .* spread)) .* ...
+    exp(-(offset .^ 2) ./ (4 .* spread));
+
+calibration = 1:4;
+holdout = 5:7;
+errors = candidates(:, calibration) - observed(calibration);
+[calibrationRMSE, best] = min(sqrt(mean(errors .^ 2, 2)));
+modeled = candidates(best, :);
+holdoutRMSE = sqrt(mean((modeled(holdout) - observed(holdout)) .^ 2));
+fprintf('Calibration RMSE: %.3f\n', calibrationRMSE);
+fprintf('Holdout RMSE: %.3f\n', holdoutRMSE);</code></pre>
+            </details>
+          </div>
+          <figcaption>Recomputed from ENVE 404 Term Project 1, Part B. Concentration in g/m³.</figcaption>
+        </figure>
+      </article>
+
+      <article class="case" id="sludgendary" aria-labelledby="sludgendary-title">
+        <div class="copy">
+          <p class="meta">Environmental engineering team design · Middle East Technical University · 2020</p>
+          <h2 id="sludgendary-title">Sludgendary · Industrial wastewater design</h2>
+          <p>Our team evaluated wastewater treatment and reuse options for an anonymized industrial zone with 144 facilities. The recommended design combined on-site corn-starch wastewater treatment with textile water reclamation.</p>
+        </div>
+        <div class="panel">
+          <p class="figure-title">Recommended treatment design</p>
+          <p class="source-note">The team compared eight concepts and designed three alternatives. The recommended scenario had a modeled treatment cost of $0.093/m³.</p>
+          <p class="source-note"><a href="https://docs.google.com/presentation/d/1w6Jd4HSkCWB6OrTguSWAZQC4jKHNhqTlFTXox_XOE-4/edit#slide=id.p17">View the team’s process diagram</a></p>
+        </div>
+      </article>
+
+      <article class="case" id="edge" aria-labelledby="edge-title">
+        <div class="copy">
+          <p class="meta">Internal planning workflow · EDGE Berlin · 2026</p>
+          <h2 id="edge-title">Event planning automation</h2>
+          <p>I built a swipe-card interface for collecting input from event leads. Replies were stored in Supabase and forwarded through a Google Apps Script webhook to a shared Google Sheet. I embedded the interface in the team’s Notion planning space.</p>
+          <p>I tested the response path by submitting cards and confirming the replies appeared in the sheet.</p>
+        </div>
+        <figure>
+          <div class="panel">
+            <p class="figure-title">Example of a planning card</p>
+            <dl class="responses">
+              <div><dt>Prompt for the production lead</dt><dd>When should volunteers arrive for setup?</dd></div>
+              <div><dt>Example reply</dt><dd>Ask volunteers to arrive 45 minutes before doors open.</dd></div>
+              <div><dt>Response recorded</dt><dd>The sheet stores a row with the card ID, assigned role and answer for review.</dd></div>
+            </dl>
+          </div>
+          <figcaption>Invented prompt and reply illustrating the workflow.</figcaption>
+        </figure>
+      </article>
+
+      <article class="case" id="regional-risk" aria-labelledby="regional-risk-title">
+        <div class="copy">
+          <p class="meta">Project methodology · 2026</p>
+          <h2 id="regional-risk-title">Regional Risk Index comparison</h2>
+          <p>The project’s comparison method matches reporting units to the INFORM Risk Index and tests how similarly the two indices rank the same units. Spearman rank correlation summarizes agreement across the ranking. Checking overlap at the top shows whether the two methods would prioritize the same places.</p>
+          <p>The comparison measures agreement with a benchmark. Predictive validation would require testing against independently observed outcomes.</p>
+        </div>
+        <figure>
+          <div class="panel">
+            <p class="figure-title">Worked example with five fictional areas</p>
+            <p class="measure">Rank 1 indicates the highest priority</p>
+            <table aria-label="Illustrative regional and benchmark ranks">
+              <thead><tr><th scope="col">Area</th><th scope="col">Regional rank</th><th scope="col">Benchmark rank</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">A</th><td>1</td><td>3</td></tr>
+                <tr><th scope="row">B</th><td>2</td><td>1</td></tr>
+                <tr><th scope="row">C</th><td>3</td><td>2</td></tr>
+                <tr><th scope="row">D</th><td>4</td><td>5</td></tr>
+                <tr><th scope="row">E</th><td>5</td><td>4</td></tr>
+              </tbody>
+            </table>
+            <p class="source-note">Spearman’s ρ = 0.60. Only area B appears in both top-two lists.</p>
+          </div>
+          <figcaption>Synthetic data for the worked example.</figcaption>
+        </figure>
+      </article>
+    </main>
+
+    <footer class="footer"><span>Meriç Erler</span><a href="#top">Back to top</a></footer>
+  </div>
+</body>
+</html>

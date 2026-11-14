@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Three illustrated work samples by Meriç Erler covering onboarding analytics, CRM migration QA, and cash runway modeling.">
+  <title>Analytics work samples · Meriç Erler</title>
+  <style>
+    :root { color-scheme: light; --ink: #171717; --muted: #555; --line: #ddd; --paper: #fff; --wash: #f5f5f5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 16px/1.55 Arial, sans-serif; }
+    h1, h2, h3, p, ul { margin: 0; }
+    a { color: inherit; text-underline-offset: .25em; text-decoration-color: #888; }
+    a:hover { text-decoration-color: currentColor; }
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+    .skip { position: fixed; top: 12px; left: 12px; padding: 8px 12px; background: var(--paper); transform: translateY(-180%); }
+    .skip:focus { transform: none; }
+    .page { width: min(960px, calc(100% - 88px)); margin: 0 auto; padding: 66px 0 68px; }
+    .name, .note { color: var(--muted); font-size: 14px; }
+    h1 { margin: 6px 0 12px; font-size: clamp(38px, 6vw, 66px); line-height: 1.05; letter-spacing: -.055em; }
+    .intro { max-width: 62ch; color: var(--muted); }
+    nav { margin-top: 17px; }
+    nav ul { display: flex; flex-wrap: wrap; gap: 7px 22px; list-style: none; padding: 0; font-size: 14px; }
+    section { margin-top: 52px; scroll-margin-top: 24px; }
+    .section-heading { border-top: 1px solid var(--ink); padding: 17px 0 10px; }
+    h2 { margin-top: 2px; font-size: clamp(24px, 3.5vw, 34px); line-height: 1.15; letter-spacing: -.035em; }
+    .sample { margin-top: 7px; max-width: 74ch; }
+    .exhibit { margin-top: 21px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+    caption { padding: 0 0 8px; text-align: left; font-weight: 700; }
+    th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    thead { background: var(--wash); }
+    tbody th { font-weight: 500; }
+    .number { text-align: right; font-variant-numeric: tabular-nums; }
+    td.number { white-space: nowrap; }
+    .exhibit .note { margin-top: 8px; }
+    .bar { display: block; width: 100%; min-width: 48px; height: 7px; margin-top: 7px; background: #e8e8e8; }
+    .bar b { display: block; width: var(--share); height: 100%; background: var(--ink); }
+    .mini { margin-top: 16px; padding: 12px 14px; border-left: 2px solid var(--ink); background: var(--wash); }
+    .mini h3 { margin-bottom: 4px; font-size: 15px; }
+    .mini p { font-size: 14px; }
+    @media (max-width: 680px) {
+      .page { width: calc(100% - 40px); padding: 34px 0 48px; }
+      section { margin-top: 38px; }
+      table { font-size: 13px; }
+      th, td { padding: 8px 6px; }
+    }
+    @media (max-width: 390px) { .bar-cell { display: none; } }
+    @media print {
+      @page { margin: 13mm; }
+      .page { width: 100%; padding: 0; }
+      .skip, nav { display: none; }
+      h1 { font-size: 34pt; }
+      section { margin-top: 25px; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#samples">Skip to samples</a>
+  <main class="page">
+    <header>
+      <p class="name">Meriç Erler</p>
+      <h1>Analytics work samples</h1>
+      <p class="intro">Three reconstructions based on work described in my CV. All figures and scenarios in the exhibits are synthetic. The examples show how the analysis can be structured.</p>
+      <p><a href="./">← Portfolio</a></p>
+      <nav aria-label="Work samples">
+        <ul>
+          <li><a href="#ceptepati">Onboarding analytics</a></li>
+          <li><a href="#viatris">CRM migration QA</a></li>
+          <li><a href="#saksi-kampus">Cash runway</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="samples">
+      <section id="ceptepati" aria-labelledby="ceptepati-title">
+        <div class="section-heading">
+          <p class="name">ceptepati · Data Analyst</p>
+          <h2 id="ceptepati-title">Onboarding funnel and experiment design</h2>
+        </div>
+        <p class="sample">I built self-serve Metabase reporting, prepared Tableau reporting with SQL, and designed and analyzed onboarding A/B tests. This sample shows how a consultation funnel could guide an experiment.</p>
+        <div class="exhibit">
+          <table>
+            <caption>Synthetic funnel · first seven days after signup</caption>
+            <thead><tr><th scope="col">Stage</th><th scope="col" class="number">Users</th><th scope="col" class="number">Of signups</th><th scope="col" class="bar-cell">Share</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Signed up</th><td class="number">2,000</td><td class="number">100%</td><td class="bar-cell"><span class="bar" aria-hidden="true"><b style="--share: 100%"></b></span></td></tr>
+              <tr><th scope="row">Completed profile</th><td class="number">1,340</td><td class="number">67%</td><td class="bar-cell"><span class="bar" aria-hidden="true"><b style="--share: 67%"></b></span></td></tr>
+              <tr><th scope="row">Booked consultation</th><td class="number">820</td><td class="number">41%</td><td class="bar-cell"><span class="bar" aria-hidden="true"><b style="--share: 41%"></b></span></td></tr>
+              <tr><th scope="row">Completed consultation</th><td class="number">620</td><td class="number">31%</td><td class="bar-cell"><span class="bar" aria-hidden="true"><b style="--share: 31%"></b></span></td></tr>
+            </tbody>
+          </table>
+          <p class="note">One entry per new user. Count stages in order and include only signups with seven full days of observation.</p>
+        </div>
+        <div class="mini">
+          <h3>Experiment to run</h3>
+          <p>Randomize new users between the existing flow and a clearer booking prompt. Compare the share of assigned users who complete a first consultation within seven days. Check cancellations per booking and wait times as guardrails.</p>
+        </div>
+      </section>
+
+      <section id="viatris" aria-labelledby="viatris-title">
+        <div class="section-heading">
+          <p class="name">Viatris · Omnichannel Data Analyst</p>
+          <h2 id="viatris-title">CRM migration quality checks</h2>
+        </div>
+        <p class="sample">I prepared CRM reporting data in SQL and worked with IT and local teams to trace duplicates and unmatched records. This fictional batch shows how to reconcile rows and surface exceptions before releasing migrated data to reporting.</p>
+        <div class="exhibit">
+          <table>
+            <caption>Synthetic reconciliation · one migration batch</caption>
+            <thead><tr><th scope="col">Disposition</th><th scope="col" class="number">Rows</th><th scope="col">Review</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Submitted</th><td class="number">12,400</td><td>Reconcile against all outcomes below.</td></tr>
+              <tr><th scope="row">Loaded to staging</th><td class="number">12,180</td><td>Verify mapped fields and consent status.</td></tr>
+              <tr><th scope="row">Held for duplicate review</th><td class="number">150</td><td>Review candidate matches before merging.</td></tr>
+              <tr><th scope="row">Held for unmatched key</th><td class="number">70</td><td>Resolve the source-to-target ID mapping.</td></tr>
+            </tbody>
+          </table>
+          <p class="note">Reconciles to 12,400 source rows. Holds stay outside staging until resolved.</p>
+        </div>
+        <div class="mini">
+          <h3>Example release decision</h3>
+          <p>Hold this batch from reporting because 12 staged rows have inconsistent consent status. Resolve the source mapping, rerun the affected rows, and confirm that the mismatch count is zero.</p>
+        </div>
+      </section>
+
+      <section id="saksi-kampus" aria-labelledby="saksi-kampus-title">
+        <div class="section-heading">
+          <p class="name">Saksı Kampüs · Business Intelligence Analyst</p>
+          <h2 id="saksi-kampus-title">Cash runway sensitivity</h2>
+        </div>
+        <p class="sample">I built recurring revenue and runway models in Power BI and prepared investor materials for a <a href="https://invest.fonbulucu.com/kampanya/1DN88G">TRY 1.37 million equity crowdfunding round</a>. This sample isolates how changes in cash inflows and outflows affect runway.</p>
+        <div class="exhibit">
+          <table>
+            <caption>Synthetic scenarios · TRY 1.2m available cash</caption>
+            <thead><tr><th scope="col">Scenario</th><th scope="col" class="number">Cash in</th><th scope="col" class="number">Cash out</th><th scope="col" class="number">Net burn</th><th scope="col" class="number">Runway</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Downside</th><td class="number">180k</td><td class="number">380k</td><td class="number">200k</td><td class="number">6 mo</td></tr>
+              <tr><th scope="row">Base</th><td class="number">230k</td><td class="number">380k</td><td class="number">150k</td><td class="number">8 mo</td></tr>
+              <tr><th scope="row">Upside</th><td class="number">260k</td><td class="number">380k</td><td class="number">120k</td><td class="number">10 mo</td></tr>
+            </tbody>
+          </table>
+          <p class="note">Cash flows are monthly and in TRY. Runway divides starting cash by monthly cash outflows minus inflows, assuming flat cash flows and no new funding.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
