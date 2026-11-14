@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pharmaceutical CRM Sales Analytics — Meriç Erler</title>
-  <meta name="description" content="Do sales calls drive prescriptions, and which doctors should a pharma team prioritize? Correlation, regression, and KMeans segmentation on 600 physicians." />
+  <meta name="description" content="Synthetic CRM analysis of recorded calls, prescriptions and segmentation for 600 physicians." />
   <link rel="canonical" href="https://merogith.github.io/Portfolio/projects/pharma-crm.html" />
 
   <meta property="og:title" content="Pharmaceutical CRM Sales Analytics — Meriç Erler" />
-  <meta property="og:description" content="Do sales calls drive prescriptions, and which doctors should a pharma team prioritize? Correlation, regression, and KMeans segmentation on 600 physicians." />
+  <meta property="og:description" content="Synthetic CRM analysis of recorded calls, prescriptions and segmentation for 600 physicians." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://merogith.github.io/Portfolio/projects/pharma-crm.html" />
   <meta property="og:image" content="https://merogith.github.io/Portfolio/assets/charts/pharma-crm/01_scripts_by_product_region.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Pharmaceutical CRM Sales Analytics — Meriç Erler" />
-  <meta name="twitter:description" content="Do sales calls drive prescriptions, and which doctors should a pharma team prioritize?" />
+  <meta name="twitter:description" content="Synthetic CRM analysis of recorded calls, prescriptions and physician segments." />
   <meta name="twitter:image" content="https://merogith.github.io/Portfolio/assets/charts/pharma-crm/01_scripts_by_product_region.png" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232f6b4f'/><text x='50' y='68' font-family='Georgia,serif' font-size='44' fill='%23faf8f3' text-anchor='middle'>ME</text></svg>" />
   <script>try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}</script>
@@ -62,8 +62,8 @@
       <header class="case__head reveal">
         <span class="card__tag card__tag--data">Data · Project 1 · synthetic data</span>
         <h1 class="case__title">Pharmaceutical CRM Sales Analytics</h1>
-        <p class="case__tagline">Do sales calls drive prescriptions, and where should a rep spend their limited time?</p>
-        <p class="case__bottomline"><b>The short answer:</b> more calls go with more prescriptions — about +5.5 scripts each, and the link holds (~+5.6) even after controlling for a doctor's potential — so rep effort looks well spent. (It's an association on observational, synthetic data, not proven causation.) Rep time is the scarce resource, so the win is concentrating it on the 99 high-potential doctors where each visit should pay off, and easing off the long tail where it doesn't.</p>
+        <p class="case__tagline">How do recorded calls relate to prescriptions? A case study using synthetic CRM data.</p>
+        <p class="case__bottomline">I measured the association between recorded sales calls and prescriptions, then used KMeans to build four current-value tiers. The 99-physician high-potential tier is a proposed screening list for outreach testing.</p>
         <div class="case__meta">
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/blob/main/project-1-pharma-crm/analysis.ipynb" target="_blank" rel="noopener">View the notebook</a>
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/tree/main/project-1-pharma-crm" target="_blank" rel="noopener">GitHub folder</a>
@@ -75,7 +75,7 @@
         <span class="stat"><b>r = 0.49</b>calls ↔ scripts</span>
         <span class="stat"><b>+5.5</b>scripts per extra call</span>
         <span class="stat"><b>4</b>behavioural segments</span>
-        <span class="stat"><b>99</b>priority doctors</span>
+        <span class="stat"><b>99</b>screening list</span>
       </div>
 
       <div class="case__callout reveal" style="margin-top:18px;">
@@ -91,11 +91,11 @@
           Interactive dashboard
         </span>
         <h2 class="dash__title">Sales Performance dashboard</h2>
-        <p class="dash__lead">A live BI view of the headline insight: <strong>more calls go with more scripts — so focus the next calls on the 99-doctor High-potential Growth segment.</strong> Slice by region and product to find where rep effort returns the most.</p>
+        <p class="dash__lead">Explore call activity and prescriptions by region and product. All figures come from synthetic data.</p>
         <ul class="dash__kpis">
           <li><b>r = 0.49</b><span>Calls ↔ scripts</span></li>
           <li><b>+5.5</b><span>Scripts / call</span></li>
-          <li><b>99</b><span>Priority doctors</span></li>
+          <li><b>99</b><span>Screening list</span></li>
           <li><b>4</b><span>HCP segments</span></li>
         </ul>
         <div class="dash__actions">
@@ -122,48 +122,47 @@
         <ul>
           <li>Cleaned and joined the call and prescription records, documenting every decision in a table.</li>
           <li>Tested the call → prescription relationship with <strong>correlation and OLS regression</strong>.</li>
-          <li>Segmented the 600 doctors into four value tiers with <strong>KMeans</strong> (k chosen by silhouette score).</li>
-          <li>Built a ranked priority list using SQL <code>RANK() OVER (PARTITION BY region …)</code> window functions.</li>
+          <li>Used <strong>KMeans</strong> to segment 600 synthetic doctors into four current-value tiers. Three clusters scored highest by silhouette. Four gave usable reporting tiers.</li>
+          <li>Ranked synthetic rep totals within territories using SQL <code>RANK() OVER (PARTITION BY region …)</code> window functions.</li>
         </ul>
       </section>
 
       <section class="case__section reveal">
         <h2>What I found</h2>
-        <p>Calls and prescriptions are meaningfully related: <strong>r = 0.49 (R² = 0.24)</strong> — a moderate positive link, with call volume accounting for roughly a quarter of the variation in scripts. Each additional call per year goes with about <strong>5.5 more scripts</strong> (~5.6 once a doctor's underlying potential is controlled for), so rep effort looks well spent — though on observational, synthetic data this is an association, not proof of causation.</p>
+        <p>Recorded calls and prescriptions were associated in the synthetic sample (<strong>r = 0.49</strong>). The regression is descriptive and the generator deliberately couples the two variables.</p>
         <figure class="case__figure">
           <img width="972" height="587" src="../assets/charts/pharma-crm/05_calls_vs_scripts.png" alt="Scatter of calls per doctor against scripts written, with an upward trend line" loading="lazy" />
-          <figcaption class="case__figcap">Each dot is a doctor; the upward line means visiting a doctor more often goes with more scripts.</figcaption>
+          <figcaption class="case__figcap">Each dot represents a synthetic physician. The slope shows the association between recorded calls and prescriptions.</figcaption>
         </figure>
 
         <p>Prescribing is concentrated: the <strong>top 20% of doctors write about 37% of all scripts</strong>. That's why <em>which</em> doctors a rep visits matters as much as how many visits they make.</p>
         <figure class="case__figure">
           <img width="1302" height="444" src="../assets/charts/pharma-crm/02_script_concentration.png" alt="Concentration curve showing a small share of doctors driving most prescriptions" loading="lazy" />
-          <figcaption class="case__figcap">A small group of doctors drives a large share of scripts, so targeting beats sheer call volume.</figcaption>
+          <figcaption class="case__figcap">Prescriptions are concentrated among a small share of synthetic physicians.</figcaption>
         </figure>
 
-        <p>A KMeans segmentation (with <em>k</em> chosen by silhouette score) splits the doctors into four current-value tiers and isolates a <strong>99-doctor "High-potential growth" tier</strong>: doctors with headroom above their current volume who still respond to calls. That's the best place to invest extra effort.</p>
+        <p>Three clusters had the highest silhouette score. I kept four for more interpretable reporting tiers. The <strong>99-doctor high-potential tier</strong> uses estimated potential and current prescriptions.</p>
         <figure class="case__figure">
-          <img width="971" height="642" src="../assets/charts/pharma-crm/06_hcp_segments.png" alt="Doctor segments from KMeans clustering plotted by value and responsiveness" loading="lazy" />
-          <figcaption class="case__figcap">Four segments: Champions (133), Steady mid-tier (51), High-potential growth (99), Low priority (317). The growth group is the target.</figcaption>
+          <img width="972" height="642" src="../assets/charts/pharma-crm/06_hcp_segments.png" alt="Doctor segments from KMeans clustering plotted by estimated potential and current prescriptions" loading="lazy" />
+          <figcaption class="case__figcap">Four segments: Champions (133), Steady mid-tier (51), High-potential growth (99), Low priority (317). The high-potential tier is a proposed screening group.</figcaption>
         </figure>
 
-        <p>Performance also varies sharply between reps: the top rep drove <strong>6,007 scripts against 154</strong> for the lowest, pointing to a coaching and territory-balancing opportunity.</p>
+        <p>Attributed prescriptions range from <strong>154 to 6,007</strong> across reps. The counts reflect the reporting rule and each rep’s territory mix.</p>
         <figure class="case__figure">
-          <img width="972" height="642" src="../assets/charts/pharma-crm/04_rep_leaderboard.png" alt="Rep leaderboard bar chart ranking sales reps by scripts driven" loading="lazy" />
-          <figcaption class="case__figcap">A wide spread between top and bottom reps; the weaker reps can be coached using the patterns the top reps already follow.</figcaption>
+          <img width="972" height="642" src="../assets/charts/pharma-crm/04_rep_leaderboard.png" alt="Rep leaderboard bar chart ranking sales reps by attributed prescriptions" loading="lazy" />
+          <figcaption class="case__figcap">The attribution rule assigns each physician’s prescriptions to their most frequent rep. Territory mix affects these totals.</figcaption>
         </figure>
 
         <div class="case__callout">
-          <p>The analysis turns a vague "visit more doctors" into a specific, <strong>ranked list of 99 to visit first</strong>.</p>
+          <p>The output is a four-tier segmentation and a screening list to use in an experiment.</p>
         </div>
       </section>
 
       <section class="case__section reveal">
         <h2>Recommendation</h2>
         <ul>
-          <li><strong>Reallocate calls toward the High-potential growth segment.</strong> These doctors have room to grow and respond to visits, so each call should return more scripts than visiting an already-loyal doctor.</li>
-          <li><strong>Keep enough contact with the Champions</strong> to retain them, without over-investing where there's no upside.</li>
-          <li><strong>Coach the weaker reps</strong> using the top reps' call-frequency and scripts-per-call patterns, and rebalance territory load toward higher-potential regions.</li>
+          <li><strong>Test outreach in the screening tier.</strong> Use a randomized experiment before reallocating calls or estimating an effect.</li>
+          <li><strong>Review coverage within comparable territories.</strong> Account for physician mix when assessing rep totals.</li>
         </ul>
       </section>
 

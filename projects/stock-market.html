@@ -62,8 +62,8 @@
       <header class="case__head reveal">
         <span class="card__tag card__tag--data">Data · Project 3 · real market data</span>
         <h1 class="case__title">US Stock-Market Valuation &amp; Risk</h1>
-        <p class="case__tagline">Does today's valuation tell you anything about tomorrow's returns? 150+ years of real market data, put to the test.</p>
-        <p class="case__bottomline"><b>The short answer:</b> a moderate yes, not a guarantee — higher starting valuations have generally preceded below-average decade-ahead returns, and the latest valid reading (≈2023, since the valuation series lags) sits in the top ~5% ever recorded. The catch is the price of admission: real, price-only drawdowns as deep as −80.6%. So set expectations low and size positions for the risk.</p>
+        <p class="case__tagline">A historical test of starting valuation and the following decade of real price returns.</p>
+        <p class="case__bottomline">Higher CAPE was associated with lower subsequent real price returns. The relationship was weaker in a non-overlapping sample. The last valid CAPE in the extract is from September 2023.</p>
         <div class="case__meta">
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/blob/main/project-3-finance/analysis.ipynb" target="_blank" rel="noopener">View the notebook</a>
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/tree/main/project-3-finance" target="_blank" rel="noopener">GitHub folder</a>
@@ -88,9 +88,9 @@
           Interactive dashboard
         </span>
         <h2 class="dash__title">Valuation &amp; Risk dashboard</h2>
-        <p class="dash__lead">A live BI view of the same story: <strong>the latest valid valuation (≈2023, as the series lags) is near the most expensive in history, and historically that has been followed by below-average returns.</strong> Filter by decade to explore real price, valuation, volatility and sector mix.</p>
+        <p class="dash__lead">Explore the historical series by decade. The valuation extract ends in September 2023.</p>
         <ul class="dash__kpis">
-          <li><b>30.8</b><span>Latest CAPE (≈2023)</span></li>
+          <li><b>30.8</b><span>September 2023 CAPE</span></li>
           <li><b>−80.6%</b><span>Worst drawdown</span></li>
           <li><b>~2.5%/yr</b><span>Real growth</span></li>
           <li><b>≈ 0</b><span>Stock–gold corr.</span></li>
@@ -124,14 +124,14 @@
         <h2>What I found</h2>
         <p>Once inflation is removed, the index's price has grown only about <strong>2.5% a year</strong>. Most of the headline growth comes from inflation and reinvested dividends (neither is in this price-only series), so return expectations should be set accordingly.</p>
         <figure class="case__figure">
-          <img width="1082" height="532" src="../assets/charts/stock-market/01_real_trend.png" alt="Real vs nominal S&P 500 on a log scale, 1871 to today" loading="lazy" />
+          <img width="1082" height="532" src="../assets/charts/stock-market/01_real_trend.png" alt="Real vs nominal S&P 500 on a log scale, from 1871 through the data extract" loading="lazy" />
           <figcaption class="case__figcap">The real trend is steady but modest; inflation accounts for most of the apparent growth.</figcaption>
         </figure>
 
-        <p>Starting valuation has tracked future returns: months with a <strong>higher CAPE were followed by lower real returns over the next decade</strong>. The signal is real but <strong>moderate</strong>: it explains only about a tenth of the variation (R² = 0.11), and the eye-catching p-value (~1e-40) is inflated by overlapping 10-year windows, which aren't independent. With Newey-West (HAC) errors it is ≈0.003, and tested on non-overlapping decades (~13 in 150 years) it isn't statistically significant — so treat it as a directional, long-horizon tendency, not a proven law. The latest valid CAPE (≈2023, since the series lags) of 30.8 sits in the <strong>top ~5%</strong> of all readings since 1881.</p>
+        <p>Starting valuation has tracked future returns: months with a <strong>higher CAPE were followed by lower real returns over the next decade</strong>. The signal is real but <strong>moderate</strong>: it explains only about a tenth of the variation (R² = 0.11), and the eye-catching p-value (~1e-40) is inflated by overlapping 10-year windows, which aren't independent. With Newey-West (HAC) errors it is ≈0.003, and tested on non-overlapping decades (~13 in 150 years) it isn't statistically significant — so treat it as a directional, long-horizon tendency, not a proven law. The last valid CAPE in the extract, 30.8 in September 2023, sits in the <strong>top ~5%</strong> of all readings since 1881.</p>
         <figure class="case__figure">
-          <img width="948" height="587" src="../assets/charts/stock-market/05_cape_vs_forward_return.png" alt="Scatter of starting CAPE against the real return over the following ten years, with today's value marked" loading="lazy" />
-          <figcaption class="case__figcap">Each point is one month; the downward slope means a higher price paid was followed by a lower future return. The latest valid CAPE (≈2023), marked in gold, is near the top of its range.</figcaption>
+          <img width="946" height="587" src="../assets/charts/stock-market/05_cape_vs_forward_return.png" alt="Scatter of starting CAPE against the real return over the following ten years, with September 2023 CAPE marked" loading="lazy" />
+          <figcaption class="case__figcap">Each point is one month; the downward slope means a higher price paid was followed by a lower future return. The September 2023 CAPE, marked in gold, is near the top of its range.</figcaption>
         </figure>
 
         <p>Large losses are a normal part of the record, not an exception. In real, price-only terms the market has fallen as much as <strong>80.6%</strong> from a previous peak (the early 1930s). That's the risk you accept for the growth.</p>
@@ -147,23 +147,18 @@
         </figure>
 
         <div class="case__callout">
-          <p>Valuation is a <strong>long-horizon signal, not a timing tool</strong>: it says a great deal about the next decade and almost nothing about the next month.</p>
+          <p>The independent-decade check weakens the evidence from overlapping monthly windows.</p>
         </div>
       </section>
 
       <section class="case__section reveal">
-        <h2>Recommendation</h2>
-        <p>For a long-term investor, the data supports three practical steps:</p>
-        <ul>
-          <li><strong>Set return expectations</strong> around the below-average real returns implied by today's high valuation, not the recent past.</li>
-          <li><strong>Pair equities with low-correlation assets</strong> such as gold or bonds to soften the drawdowns the record shows are inevitable.</li>
-          <li><strong>Automate contributions and rebalancing</strong>, because the main risk the data exposes is behavioural: selling during the long stretches when the market is underwater.</li>
-        </ul>
+        <h2>Takeaway</h2>
+        <p>Check that results hold across independent periods before drawing conclusions from a long-horizon regression.</p>
       </section>
 
       <section class="case__section reveal">
         <h2>Limitations &amp; next steps</h2>
-        <p>The regression is a simple linear fit on overlapping 10-year windows, so its standard errors are optimistic and the headline p-value overstates the certainty — the honest reading is a moderate, directional "below average," not a precise number. Today's valuation also sits beyond the range the fit was trained on (the fitted sample runs to ~2013), so it's an extrapolation, and the valuation series itself lags the price by a couple of years. The growth and drawdown figures are price-only and exclude dividends. Useful extensions: a total-return series that includes reinvested dividends for a truer long-run figure, an out-of-sample backtest with confidence bands around the valuation signal, and a check of whether the same relationship holds across sectors and international markets.</p>
+        <p>The regression uses overlapping ten-year windows. A Newey–West adjustment helps account for the dependence. The estimate is weaker over non-overlapping decades. Growth and drawdowns use prices and exclude dividends. A separate out-of-sample study would be needed to evaluate forecasts.</p>
       </section>
 
       <section class="case__section reveal">

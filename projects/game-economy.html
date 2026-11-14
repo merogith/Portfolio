@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Free-to-Play Game Economy &amp; Balance — Meriç Erler</title>
-  <meta name="description" content="Is the game economy balanced, which items are overpowered, and who pays? Economy accounting, z-tests, retention cohorts, and a logistic payer model (AUC ≈0.79)." />
+  <meta name="description" content="Synthetic game telemetry analysis of coin flows, item win rates and retention." />
   <link rel="canonical" href="https://merogith.github.io/Portfolio/projects/game-economy.html" />
 
   <meta property="og:title" content="Free-to-Play Game Economy &amp; Balance — Meriç Erler" />
-  <meta property="og:description" content="Is the game economy balanced, which items are overpowered, and who pays? Economy accounting, z-tests, retention cohorts, and a logistic payer model (AUC ≈0.79)." />
+  <meta property="og:description" content="Synthetic game telemetry analysis of coin flows, item win rates and retention." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://merogith.github.io/Portfolio/projects/game-economy.html" />
   <meta property="og:image" content="https://merogith.github.io/Portfolio/assets/charts/game-economy/01_player_mix.png" />
@@ -63,7 +63,7 @@
         <span class="card__tag card__tag--data">Data · Project 2 · synthetic data</span>
         <h1 class="case__title">Free-to-Play Game Economy &amp; Balance</h1>
         <p class="case__tagline">Is the economy balanced, which items are broken, and who actually pays for it?</p>
-        <p class="case__bottomline"><b>The short answer:</b> the economy is broadly balanced with a handful of genuinely overpowered items to rein in, and monetisation is small (only 5.8% ever pay) but separable — a model flags likely payers from their first three days alone with AUC ≈0.79. On this synthetic data, early engagement and paying share a designed-in propensity, so that score is best read as a working pipeline rather than a real-world prediction.</p>
+        <p class="case__bottomline">I used synthetic telemetry to track coin flows, item win rates and retention. The analysis flags a growing coin surplus, two high-win-rate premium items, and a steep first-day retention drop.</p>
         <div class="case__meta">
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/blob/main/project-2-game-economy/analysis.ipynb" target="_blank" rel="noopener">View the notebook</a>
           <a class="btn btn--ghost btn--sm" href="https://github.com/merogith/DataAnalysis/tree/main/project-2-game-economy" target="_blank" rel="noopener">GitHub folder</a>
@@ -71,7 +71,7 @@
       </header>
 
       <div class="case__statband reveal">
-        <span class="stat"><b>~63%</b>coin recovery (inflation)</span>
+        <span class="stat"><b>~63%</b>coin recovery</span>
         <span class="stat"><b>61%</b>Phoenix Blade win rate</span>
         <span class="stat"><b>47→18→4%</b>retention D1/D7/D30</span>
         <span class="stat"><b>5.8%</b>payer rate</span>
@@ -117,19 +117,19 @@
       <section class="case__section reveal">
         <h2>Approach &amp; method</h2>
         <ul>
-          <li><strong>Economy accounting:</strong> compared coins minted (faucets) against coins removed (sinks) to measure inflation, with a SQL <code>SUM() OVER (PARTITION BY …)</code> running wallet balance.</li>
+          <li><strong>Economy accounting:</strong> compared coins minted (faucets) against coins removed (sinks) to measure net currency supply, with a SQL <code>SUM() OVER (PARTITION BY …)</code> running wallet balance.</li>
           <li><strong>Item balance:</strong> proportion z-tests with 95% confidence intervals vs the fair 50% line, requiring both significance <em>and</em> a ≥5-point effect to flag an item — so trivially-off items that only "test significant" on huge samples read as "skewed, small," not overpowered.</li>
           <li><strong>Retention:</strong> built D1 / D7 / D30 cohort curves.</li>
-          <li><strong>Monetisation:</strong> a funnel plus a logistic-regression payer model on first-3-day behaviour, scored by AUC and accuracy.</li>
+          <li><strong>Monetisation:</strong> a funnel plus a logistic-regression payer model on first-3-day behaviour, scored on a synthetic holdout.</li>
         </ul>
       </section>
 
       <section class="case__section reveal">
         <h2>What I found</h2>
-        <p>The economy is <strong>mildly inflationary</strong>: sinks recover only ~63% of every coin minted, so wallets steadily swell and the soft currency slowly loses value (net +6.8M coins over the window).</p>
+        <p>Sinks recover about <strong>63% of minted coins</strong>. Net coin supply rises by about 6.8 million over the window. Measuring purchasing power would require separate price data.</p>
         <figure class="case__figure">
-          <img width="1080" height="697" src="../assets/charts/game-economy/03_economy_flow.png" alt="Currency faucets versus sinks over time, with a growing cumulative surplus" loading="lazy" />
-          <figcaption class="case__figcap">Faucets out-pace sinks and the surplus only grows, the signature of mild inflation.</figcaption>
+          <img width="1079" height="697" src="../assets/charts/game-economy/03_economy_flow.png" alt="Currency faucets versus sinks over time, with a growing cumulative surplus" loading="lazy" />
+          <figcaption class="case__figcap">The synthetic ledger shows coin accumulation. Prices were not measured.</figcaption>
         </figure>
 
         <p>Two premium items are <strong>overpowered by a meaningful margin</strong> — significant <em>and</em> well over 5 points off fair: Phoenix Blade wins 61.3% and Aegis Shield 59.4%, with confidence intervals entirely above 50%. Because both are paid, the game reads as mildly <strong>pay-to-win</strong>. Rusty Dagger is the opposite, an underpowered starter trap at 41.8%. (Items sitting only a point or two off 50% are treated as "skewed, small," not flagged as broken.)</p>
@@ -144,7 +144,7 @@
           <figcaption class="case__figcap">About half of installs never return on day 1, the steepest part of the whole funnel.</figcaption>
         </figure>
 
-        <p>Monetisation is small but <strong>separable</strong>: only 5.8% of players ever pay (ARPPU $15.61), and a logistic model separates payers from first-3-day behaviour alone with <strong>AUC ≈0.79</strong> — it ranks a random payer above a random non-payer about 79% of the time — at ~74% accuracy. One honest caveat: on this synthetic data, early engagement is itself a term in how payers are generated, so the AUC partly reflects that designed-in coupling. It demonstrates the pipeline works; it isn't a generalisable real-world prediction.</p>
+        <p>Only 5.8% of synthetic players had a recorded purchase. The classifier using days 0–3 activity reached <strong>ROC AUC ≈0.79</strong>. Accuracy at its threshold was about 74%, compared with 94% for a rule that always predicts nonpayer. Average precision was 0.217 versus a payer prevalence baseline of 0.058. The generator partly determines this association. A day-three intervention needs an outcome window after the feature window.</p>
         <figure class="case__figure">
           <img width="1302" height="466" src="../assets/charts/game-economy/08_payer_model.png" alt="ROC curve and feature importance for the logistic payer-prediction model" loading="lazy" />
           <figcaption class="case__figcap">Payers are sharply distinguished by early engagement, enough to target a fair early offer.</figcaption>
@@ -158,10 +158,10 @@
       <section class="case__section reveal">
         <h2>Recommendation</h2>
         <ul>
-          <li><strong>Re-balance the economy.</strong> Add or deepen a coin sink (cosmetics, repairs, a battle pass) so sinks recover ~90–100% of faucets, and trim late-game faucet creep. Target net daily flow near zero.</li>
+          <li><strong>Re-balance the economy.</strong> Add or deepen a coin sink (cosmetics, repairs, a battle pass) so sinks recover ~90–100% of faucets, and tune late-game supply. Measure progression and retention as guardrails.</li>
           <li><strong>Bring the two overpowered premium items down</strong> toward a 50% win rate to clear the pay-to-win perception, and strengthen Rusty Dagger so the starter weapon isn't a trap.</li>
           <li><strong>Attack the D1 drop first</strong> with better onboarding, a guaranteed early win, and a D1 login reward. A few points of D1 cascade into every later metric.</li>
-          <li><strong>Target likely payers early</strong> using the model: a well-timed, fair first offer to high-propensity players in their first days.</li>
+          <li><strong>Define the outcome for a targeting test.</strong> Use purchases after day three and a holdout before evaluating a day-three offer.</li>
         </ul>
       </section>
 
