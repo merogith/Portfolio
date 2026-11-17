@@ -1,0 +1,7 @@
+cohort,users,signup_at,profile_hours,booking_hours,completion_hours,repeat_profile
+completed,620,2026-01-01 00:00:00,24,72,144,1
+booked,200,2026-01-01 00:00:00,24,72,,0
+profile_only_with_early_booking,520,2026-01-01 00:00:00,24,12,,0
+late_events,30,2026-01-01 00:00:00,192,216,240,0
+signup_only,630,2026-01-01 00:00:00,,,,0
+immature_excluded,7,2026-01-13 00:00:00,6,12,24,0

@@ -1,0 +1,5 @@
+group,rows,disposition,source_consent,staged_consent,wrong_target
+clean_staging,12168,staged,granted,granted,0
+mapping_defect,12,staged,denied,granted,1
+duplicate_review,150,duplicate_hold,denied,,0
+unmatched_key,70,unmatched_hold,denied,,0

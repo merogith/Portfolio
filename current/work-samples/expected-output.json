@@ -1,0 +1,37 @@
+{
+  "synthetic_example": true,
+  "funnel": {
+    "signed_up": 2000,
+    "completed_profile": 1340,
+    "booked_consultation": 820,
+    "completed_consultation": 620
+  },
+  "crm_qa": {
+    "before_correction": {
+      "submitted": 12400,
+      "staged_outcomes": 12180,
+      "staged_rows": 12180,
+      "duplicate_hold": 150,
+      "unmatched_hold": 70,
+      "consent_mismatches": 12,
+      "mapping_mismatches": 12,
+      "ineligible_staged": 0,
+      "missing_staged": 0,
+      "reconciliation_delta": 0,
+      "release_gate": "BLOCK: do not release staging to reporting"
+    },
+    "after_demo_correction": {
+      "submitted": 12400,
+      "staged_outcomes": 12180,
+      "staged_rows": 12180,
+      "duplicate_hold": 150,
+      "unmatched_hold": 70,
+      "consent_mismatches": 0,
+      "mapping_mismatches": 0,
+      "ineligible_staged": 0,
+      "missing_staged": 0,
+      "reconciliation_delta": 0,
+      "release_gate": "PASS: staged rows only; holds stay excluded"
+    }
+  }
+}

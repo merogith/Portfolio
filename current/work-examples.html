@@ -39,6 +39,21 @@
     .mini { margin-top: 16px; padding: 12px 14px; border-left: 2px solid var(--ink); background: var(--wash); }
     .mini h3 { margin-bottom: 4px; font-size: 15px; }
     .mini p { font-size: 14px; }
+    [hidden] { display: none !important; }
+    .downloads { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 14px; font-size: 14px; }
+    pre { padding: 12px; background: var(--wash); overflow-x: auto; font-size: 13px; }
+    .table-wrap { overflow-x: auto; }
+    fieldset { margin: 24px 0 0; padding: 18px; border: 1px solid var(--line); }
+    legend { padding: 0 7px; font-weight: 700; }
+    .scenario-inputs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    label { display: block; font-size: 14px; }
+    input { display: block; width: 100%; min-width: 0; padding: 9px; margin-top: 5px; color: var(--ink); background: var(--paper); border: 1px solid #888; font: inherit; }
+    button { padding: 9px 13px; color: var(--ink); background: var(--wash); border: 1px solid #888; font: inherit; cursor: pointer; }
+    button:disabled { opacity: .55; cursor: default; }
+    .scenario-actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
+    .scenario-result { font-weight: 700; min-height: 3em; margin: 14px 0; }
+    .scenario-inputs + .note { margin-top: 10px; }
+    @media (max-width: 680px) { .scenario-inputs { grid-template-columns: 1fr; } }
     @media (max-width: 680px) {
       .page { width: calc(100% - 40px); padding: 34px 0 48px; }
       section { margin-top: 38px; }
@@ -61,7 +76,7 @@
     <header>
       <p class="name">Meriç Erler</p>
       <h1>Analytics work samples</h1>
-      <p class="intro">Three reconstructions based on work described in my CV. All figures and scenarios in the exhibits are synthetic. The examples show how the analysis can be structured.</p>
+      <p class="intro">Three reconstructions based on work described in my CV. All figures and scenarios in the exhibits are synthetic. Download runnable SQL and Python examples, inspect the quality checks, or change the cash assumptions below.</p>
       <p><a href="./">← Portfolio</a></p>
       <nav aria-label="Work samples">
         <ul>
@@ -90,7 +105,18 @@
               <tr><th scope="row">Completed consultation</th><td class="number">620</td><td class="number">31%</td><td class="bar-cell"><span class="bar" aria-hidden="true"><b style="--share: 31%"></b></span></td></tr>
             </tbody>
           </table>
-          <p class="note">One entry per new user. Count stages in order and include only signups with seven full days of observation.</p>
+          <p class="note">One entry per new user. Count stages in order and include only signups with seven full days of observation. Repeated events, late events and immature signups are present in the downloadable fixture so the exclusions can be checked.</p>
+          <div class="downloads" aria-label="Onboarding sample files">
+            <a href="work-samples/analytics-exhibits.zip" download>Download runnable examples (ZIP)</a>
+            <a href="work-samples/funnel.sql" download>Funnel SQL</a>
+            <a href="work-samples/funnel-cohorts.csv" download>Compact cohort fixture (CSV)</a>
+            <a href="work-samples/expected-output.json">Expected output</a>
+          </div>
+          <details class="mini"><summary>Reproduce these figures</summary>
+            <p>Unzip the examples and run the command below with Python 3. The script uses only the standard library and SQLite, expands the compact fixture into individual users, and checks the displayed totals. No account or network connection is required.</p>
+            <pre><code>python3 reproduce.py</code></pre>
+            <p>Expected funnel: 2,000 → 1,340 → 820 → 620. These are fictional cohort counts, not historical experiment results.</p>
+          </details>
         </div>
         <div class="mini">
           <h3>Experiment to run</h3>
@@ -119,7 +145,13 @@
         </div>
         <div class="mini">
           <h3>Example release decision</h3>
-          <p>Hold this batch from reporting because 12 staged rows have inconsistent consent status. Resolve the source mapping, rerun the affected rows, and confirm that the mismatch count is zero.</p>
+          <p>Hold this batch from reporting: 12 staged rows have deliberately wrong target-ID mappings and inconsistent consent status. Reconciliation alone still balances, so it cannot detect this defect. Correct the mapped fields from the verified source records and rerun the same release gate.</p>
+          <p class="note">The runnable example reports BLOCK before correction, then PASS for staging after an in-memory demo correction. All 220 held rows remain excluded.</p>
+          <div class="downloads" aria-label="CRM quality sample files">
+            <a href="work-samples/analytics-exhibits.zip" download>Download runnable examples (ZIP)</a>
+            <a href="work-samples/migration-qa.sql" download>Reconciliation and release-gate SQL</a>
+            <a href="work-samples/crm-batch.csv" download>Compact migration fixture (CSV)</a>
+          </div>
         </div>
       </section>
 
@@ -128,9 +160,9 @@
           <p class="name">Saksı Kampüs · Business Intelligence Analyst</p>
           <h2 id="saksi-kampus-title">Cash runway sensitivity</h2>
         </div>
-        <p class="sample">I built recurring revenue and runway models in Power BI and prepared investor materials for a <a href="https://invest.fonbulucu.com/kampanya/1DN88G">TRY 1.37 million equity crowdfunding round</a>. This sample isolates how changes in cash inflows and outflows affect runway.</p>
+        <p class="sample">In this past role, I built recurring revenue and runway models in Power BI and prepared investor materials. This synthetic sample isolates how changes in cash inflows and outflows affect runway; it does not reproduce the employer’s finances.</p>
         <div class="exhibit">
-          <table>
+          <div class="table-wrap" role="region" aria-label="Static cash scenarios" tabindex="0"><table>
             <caption>Synthetic scenarios · TRY 1.2m available cash</caption>
             <thead><tr><th scope="col">Scenario</th><th scope="col" class="number">Cash in</th><th scope="col" class="number">Cash out</th><th scope="col" class="number">Net burn</th><th scope="col" class="number">Runway</th></tr></thead>
             <tbody>
@@ -139,10 +171,34 @@
               <tr><th scope="row">Upside</th><td class="number">260k</td><td class="number">380k</td><td class="number">120k</td><td class="number">10 mo</td></tr>
             </tbody>
           </table>
-          <p class="note">Cash flows are monthly and in TRY. Runway divides starting cash by monthly cash outflows minus inflows, assuming flat cash flows and no new funding.</p>
+          </div><p class="note">Cash flows are monthly and in TRY. Runway divides starting cash by monthly cash outflows minus inflows, assuming flat cash flows and no new funding, financing costs or one-off costs. Negative projected balances represent a funding gap, not spendable cash.</p>
+          <form id="runway-form" hidden aria-label="Edit the synthetic cash scenario">
+            <fieldset>
+              <legend>Try your own synthetic scenario</legend>
+              <div class="scenario-inputs">
+                <label for="opening-cash">Starting cash (TRY)<input id="opening-cash" name="cash" type="number" min="0" max="1000000000000" step="0.01" value="1200000" required inputmode="decimal"></label>
+                <label for="cash-in">Monthly cash in (TRY)<input id="cash-in" name="inflow" type="number" min="0" max="1000000000000" step="0.01" value="230000" required inputmode="decimal"></label>
+                <label for="cash-out">Monthly cash out (TRY)<input id="cash-out" name="outflow" type="number" min="0" max="1000000000000" step="0.01" value="380000" required inputmode="decimal"></label>
+              </div>
+              <p class="note">Enter non-negative amounts with at most two decimal places, up to TRY 1 trillion. Changes stay in this page.</p>
+              <p id="runway-result" class="scenario-result" role="status" aria-live="polite" aria-atomic="true"></p>
+              <div class="scenario-actions">
+                <button type="reset">Reset to base scenario</button>
+                <button type="button" id="download-scenario">Download scenario (CSV)</button>
+              </div>
+              <div class="table-wrap" role="region" aria-label="Projected cash balances" tabindex="0">
+                <table id="cash-projection"><caption>Cash balance before financing (TRY)</caption>
+                  <thead><tr><th scope="col">Month</th><th scope="col" class="number">Projected balance</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </fieldset>
+          </form>
+          <noscript><p class="note">Enable JavaScript to edit a scenario; the static examples above and all downloadable SQL/Python files work without it.</p></noscript>
         </div>
       </section>
     </div>
   </main>
+  <script src="work-samples/runway.js" defer></script>
 </body>
 </html>
