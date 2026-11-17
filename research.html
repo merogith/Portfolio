@@ -68,7 +68,6 @@
       <nav aria-label="Jump to a project">
         <a href="./">← Portfolio</a>
         <a href="#thesis">Pharmaceutical marketing</a>
-        <a href="#saksi">Saksı Kampüs</a>
         <a href="#konya">Konya watershed</a>
         <a href="#matlab">MATLAB modeling</a>
         <a href="#sludgendary">Sludgendary</a>
@@ -84,6 +83,8 @@
           <h2 id="thesis-title">Revolutionizing Pharmaceutical Marketing with Generative AI</h2>
           <p>I surveyed 55 pharmaceutical professionals using the Technology Acceptance Model and compared perceived usefulness and ease of use across marketing tasks.</p>
           <p>Perceived usefulness was positively associated with intention to use generative AI. The cross-sectional survey measured perceptions and intended use at one point in time.</p>
+          <p>The online survey used purposive recruitment through pharmaceutical managers and colleagues. It contained 47 questions and remained open for two weeks; the findings describe this sample rather than all pharmaceutical professionals.</p>
+          <p><a href="https://drive.google.com/file/d/1lUhQ0ITQEERy6ZCVRG1LqNJ-borLE60i/view">Read the full thesis</a> · Methods: §4.1 · Task ratings: Table 29, p. 96.</p>
         </div>
         <figure>
           <div class="panel">
@@ -102,26 +103,6 @@
         </figure>
       </article>
 
-      <article class="case" id="saksi" aria-labelledby="saksi-title">
-        <div class="copy">
-          <p class="meta">Corporate Management capstone · University of Europe for Applied Sciences · 2023</p>
-          <h2 id="saksi-title">Saksı Kampüs · German market expansion</h2>
-          <p>I prepared a market-entry proposal for a Turkish education technology startup. I assessed German university students as an initial audience, mapped competitors and outlined operating and funding assumptions.</p>
-          <p>The proposal used the product roadmap to frame what could be tested first and what would require further development.</p>
-        </div>
-        <figure>
-          <div class="panel">
-            <p class="figure-title">Product roadmap assessed in the capstone</p>
-            <ol class="steps">
-              <li><strong>Tutor questions.</strong> Begin with a mobile module connecting students with tutors.</li>
-              <li><strong>Broader online learning.</strong> Add lectures, videos and mentoring.</li>
-              <li><strong>Enhanced learning modules.</strong> Explore AI- and VR-assisted learning.</li>
-            </ol>
-          </div>
-          <figcaption>Adapted from capstone §1.4, pp. 6–7. The roadmap describes planned capabilities and the case presents a proposed expansion.</figcaption>
-        </figure>
-      </article>
-
       <article class="case" id="konya" aria-labelledby="konya-title">
         <div class="copy">
           <p class="meta">ENVE 414 team project · Middle East Technical University · 2020–21</p>
@@ -137,7 +118,7 @@
               <div><dt>Ecosystems</dt><dd>Consider wetland protection and restoration, land use and habitat connectivity in watershed planning.</dd></div>
             </dl>
           </div>
-          <figcaption>Adapted from the final team presentation, slides 14–19. These options were assessed as part of the coursework.</figcaption>
+          <figcaption>Source: <cite>Effect of Climate Change and Sustainable Strategies for Konya Watershed</cite>, final team presentation, ecological and agricultural recommendations. The team assessed wetland protection, land use, connectivity and restoration alongside cablegation, surge irrigation, LEPA and LESA. These are coursework recommendations, not measured implementation outcomes.</figcaption>
         </figure>
       </article>
 
@@ -147,6 +128,8 @@
           <h2 id="matlab-title">Calibrating a contaminant transport model</h2>
           <p>I simulated concentration over time and distance in MATLAB. At 60 m, I fitted the dispersion parameter to four observations by minimizing root mean square error and checked the fit against the three remaining observations.</p>
           <p>RMSE was 0.37 g/m³ on the calibration points and 0.16 g/m³ on the held-out points. The check used one distance and three held-out values.</p>
+          <p class="note">Source: <cite>ENVE 404 Term Project 1</cite>, 13 November 2020, Part B. The original report confirms the four/three observation split and best raw dispersion value of 1085. The assignment mixes year and day labels; this reproduces its numeric fit, not a physically validated field model.</p>
+          <p><a href="research-files/transport-fit.m" download>Download the reproducible MATLAB excerpt</a></p>
         </div>
         <figure>
           <div class="panel">
@@ -234,7 +217,9 @@ fprintf('Holdout RMSE: %.3f\n', holdoutRMSE);</code></pre>
         </div>
         <div class="panel">
           <p class="figure-title">Recommended treatment design</p>
-          <p class="source-note">The team compared eight concepts and designed three alternatives. The recommended scenario had a modeled treatment cost of $0.093/m³.</p>
+          <p class="source-note">The team compared eight concepts and designed three alternatives. The selected scenario combined UASB, membrane bioreactor and reverse osmosis for corn-starch wastewater with textile water reclamation.</p>
+          <p class="source-note">Slide 40 reports modeled present-value costs of $3,242,297.8 and 34,783,770 m³ treated over 20 years, giving the reported $0.093/m³. These are the 2020 coursework model’s assumptions and outputs, not a current construction quote or observed operating cost.</p>
+          <p class="source-note"><a href="https://docs.google.com/presentation/d/1w6Jd4HSkCWB6OrTguSWAZQC4jKHNhqTlFTXox_XOE-4/edit#slide=id.p40">Inspect the cost calculation</a></p>
           <p class="source-note"><a href="https://docs.google.com/presentation/d/1w6Jd4HSkCWB6OrTguSWAZQC4jKHNhqTlFTXox_XOE-4/edit#slide=id.p17">View the team’s process diagram</a></p>
         </div>
       </article>
@@ -244,7 +229,9 @@ fprintf('Holdout RMSE: %.3f\n', holdoutRMSE);</code></pre>
           <p class="meta">Internal planning workflow · EDGE Berlin · 2026</p>
           <h2 id="edge-title">Event planning automation</h2>
           <p>I built a swipe-card interface for collecting input from event leads. Replies were stored in Supabase and forwarded through a Google Apps Script webhook to a shared Google Sheet. I embedded the interface in the team’s Notion planning space.</p>
-          <p>I tested the response path by submitting cards and confirming the replies appeared in the sheet.</p>
+          <p>My 3 November 2026 implementation log records role-filtered question cards, saved test responses, and a live check that new answers appeared automatically in the sheet. The response data was organized into Answers and Questions tabs so card IDs could be matched to the relevant event, prompt and owner.</p>
+          <p class="note">This is a case study of internal work. The production workspace and team responses are not a public demo. The illustrated card below contains invented content.</p>
+          <details><summary>How the response path worked</summary><ol class="steps"><li>Event leads selected their role to see relevant planning cards.</li><li>The interface stored a submitted response in Supabase.</li><li>A database webhook sent new responses to a Google Apps Script receiver.</li><li>The receiver added the response to a shared Google Sheet; the interface was embedded in Notion.</li></ol><p class="note source-note">The work log records successful test submissions, not a reliability benchmark. It also notes follow-up checks for owner mapping, historic-response backfill and stronger access control before broader team use.</p></details>
         </div>
         <figure>
           <div class="panel">
